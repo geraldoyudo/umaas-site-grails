@@ -121,6 +121,8 @@ public class UmaasAuthenticationProvider implements AuthenticationProvider {
 		params.put("user", username);
 		params.put("password", password);
 		params.put("domain", domainId );
+		System.out.println("username "  + username);
+		System.out.println("password" + password);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(umaasCoreUrl +
 				"/domain/auth/authenticate")
 		       .queryParam("user", username)
@@ -134,6 +136,8 @@ public class UmaasAuthenticationProvider implements AuthenticationProvider {
 		        HttpMethod.GET, 
 		        entity, 
 		        AuthenticationResult.class).getBody();
+		System.out.println(result.isAuthenticated());
+		System.out.println(Arrays.toString(result.getRoles().toArray()));
 		if(!result.isAuthenticated()){
 			throw new BadCredentialsException(Arrays.toString(result.getMessages().toArray()));
 		}
@@ -155,6 +159,7 @@ public class UmaasAuthenticationProvider implements AuthenticationProvider {
 		        HttpMethod.GET, 
 		        entity, 
 		        UmaasUser.class).getBody();
+		System.out.println(user.getUsername());
 		return user;
 	}
 	

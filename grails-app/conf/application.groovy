@@ -2,7 +2,6 @@ grails.plugin.springsecurity.providerNames = [
    'umaasAuthenticationProvider',
    'anonymousAuthenticationProvider',
    'rememberMeAuthenticationProvider']
-grails.plugin.springsecurity.useBasicAuth = true
 grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
 grails.plugin.springsecurity.interceptUrlMap = [
    [pattern: '/',               access: ['permitAll']],
@@ -19,5 +18,6 @@ grails.plugin.springsecurity.interceptUrlMap = [
    [pattern: '/login/**',       access: ['permitAll']],
    [pattern: '/logout',         access: ['permitAll']],
    [pattern: '/logout/**',      access: ['permitAll']],
-   [pattern: '/home/**',      access: ['isFullyAuthenticated()']]
+   [pattern: '/home/**',      access: ['isFullyAuthenticated()']],
+   [pattern: '/application',      access: ['permitAll']]
 ]

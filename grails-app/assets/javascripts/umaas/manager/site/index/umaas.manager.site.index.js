@@ -21,6 +21,11 @@ function config($stateProvider, $urlRouterProvider) {
         .state('index', {
             url: "/",
             templateUrl: "/umaas/manager/site/index/index.html"
+        })
+        .state('login', {
+            url: "/login",
+            templateUrl: "/umaas/manager/site/index/login.html",
+            controller: 'LoginController'
         });
 
     $urlRouterProvider.otherwise('/');
