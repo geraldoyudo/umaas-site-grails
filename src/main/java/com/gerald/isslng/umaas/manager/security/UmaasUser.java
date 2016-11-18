@@ -1,12 +1,13 @@
 package com.gerald.isslng.umaas.manager.security;
 
+import java.security.Principal;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UmaasUser {
+public class UmaasUser implements Principal {
 	@JsonProperty("externalId")
 	private String id;
 	private String email;
@@ -43,6 +44,10 @@ public class UmaasUser {
 	}
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
+	}
+	@Override
+	public String getName() {
+		return username;
 	}
 	
 }
