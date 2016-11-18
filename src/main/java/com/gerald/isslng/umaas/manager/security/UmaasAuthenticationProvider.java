@@ -23,6 +23,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Base64Utils;
 import org.springframework.web.client.RestTemplate;
@@ -30,9 +33,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import grails.plugin.springsecurity.userdetails.GormUserDetailsService;
 
-@Component("umaasAuthenticationProvider")
-public class UmaasAuthenticationProvider implements AuthenticationProvider {
+
+public class UmaasAuthenticationProvider extends GormUserDetailsService implements AuthenticationProvider{
 	
 	@Value("${umaas.core:http://localhost:8040/umaas-core}")
 	private String umaasCoreUrl;
@@ -214,5 +218,11 @@ public class UmaasAuthenticationProvider implements AuthenticationProvider {
 		public void setMessages(Set<String> messages) {
 			this.messages = messages;
 		}
+	}
+	
+	@Override
+	public UserDetails loadUserByUsername(String username, boolean loadRoles) throws UsernameNotFoundException {
+		
+		return getUser(username);
 	}
 }

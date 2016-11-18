@@ -17,6 +17,8 @@ function LoginController(callbackPersisterService, contextPath,
           console.log(resp);
           if(resp.success){
             callbackPersisterService.accept();
+            $rootScope.$emit('app.OnLogin');
+            console.log("Emittedd Login Event");
             if($rootScope.previousState){
                 var previousState = $rootScope.previousState;
                 console.log("Going to previousState ",previousState);

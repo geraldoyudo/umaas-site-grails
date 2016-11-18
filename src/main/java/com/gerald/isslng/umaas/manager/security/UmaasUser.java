@@ -1,13 +1,20 @@
 package com.gerald.isslng.umaas.manager.security;
 
-import java.security.Principal;
+import java.util.Collection;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UmaasUser implements Principal {
+public class UmaasUser implements UserDetails {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2955931888712168841L;
 	@JsonProperty("externalId")
 	private String id;
 	private String email;
@@ -46,8 +53,29 @@ public class UmaasUser implements Principal {
 		this.roles = roles;
 	}
 	@Override
-	public String getName() {
-		return username;
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getPassword() {
+		return "";
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 	
 }
