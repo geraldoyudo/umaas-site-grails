@@ -1,12 +1,13 @@
 package com.gerald.isslng.umaas.manager.security;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.client.RestTemplate;
+
+import com.gerald.isslng.umaas.manager.GeneralConfiguration;
 
 public class UmaasAuthenticationTest {
 	UmaasAuthenticationProvider provider = new UmaasAuthenticationProvider();
@@ -17,7 +18,8 @@ public class UmaasAuthenticationTest {
 		provider.setAccessCodeId("0000");
 		provider.setDomainId("1111");
 		provider.setUmaasCoreUrl("http://localhost:8040/umaas-core");
-		provider.setRestTemplate(new RestTemplate());
+		GeneralConfiguration config = new  GeneralConfiguration();
+		provider.setRestTemplate(config.restTemplate());
 	}
 	@Test
 	public void test() {
