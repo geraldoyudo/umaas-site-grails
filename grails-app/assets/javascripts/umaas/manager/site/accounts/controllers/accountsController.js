@@ -5,7 +5,7 @@ angular
     .controller("AccountsController", AccountsController);
 
 function AccountsController(Domain, AccessCode,
-  $scope, $rootScope, userProfileService) {
+  $scope, $rootScope, userProfileService, FormFactory) {
   $scope.user = userProfileService.getUser();
   var initialize = function(){
     $scope.domains = [];
@@ -41,4 +41,16 @@ function AccountsController(Domain, AccessCode,
   $rootScope.$on('app.newUser', reloadUser);
   console.log("Initializing accounts controller");
 
+  $scope.newDomainField = FormFactory.createDomain();
+  $scope.saveDomain = function(domain){
+    Domain.update({id:domain.id}, domain).$promise.then(function(){
+      alert("Update Successful");
+    });
+  }
+  $scope.saveAccessCode = function(accessCode){
+    AccessCode.update({id:accessCode.id}, accessCode).$promise.then(function(){
+      alert("Update Successful");
+    });
+  }
+  
 }

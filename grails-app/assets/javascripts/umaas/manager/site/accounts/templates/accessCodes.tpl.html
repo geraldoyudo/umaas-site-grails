@@ -1,3 +1,35 @@
-<div class="container">
-Access Codes
+<div class="container" ng-init="createView = false">
+<h3>Access Codes </h3>
+<div class = "container">
+<div class = "row">
+  <button class="btn btn-primary" ng-click="createView = true">Create Access Code</button>
+</div>
+<div ng-show="createView" class = "row">
+  Create View Here
+</div>
+<div class= "row">
+  <div class="col-md-2">
+    <span>Id</span>
+  </div>
+  <div>
+    <span>Code</span>
+  </div>
+</div>
+<div ng-if="!accessCodes.length"> No Domains</div>
+<div ng-repeat="accessCode in accessCodes" class= "row">
+    <div class="col-md-2">
+      <span>{{accessCode.codeId}}</span>
+    </div>
+    <div class = "col-md-2">
+      <span editable-text="domain.code">{{accessCode.code}}</span>
+    </div>
+    <div class = "col-md-2">
+      <button class="btn btn-primary" ng-click="saveAccessCode(accessCode)">
+        Update
+      </button>
+    </div>
+
+</div>
+</div>
+
 </div>

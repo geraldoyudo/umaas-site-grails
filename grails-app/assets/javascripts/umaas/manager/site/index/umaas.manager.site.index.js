@@ -12,7 +12,10 @@ angular.module("umaas.manager.site.index", [
     "umaas.manager.site.core",
     "ui.bootstrap.dropdown",
     "ui.bootstrap.collapse",
-    "ui.router"
+    "ui.router",
+    "xeditable",
+    "formly",
+    "formlyBootstrap"
 ])
 .config(config);
 

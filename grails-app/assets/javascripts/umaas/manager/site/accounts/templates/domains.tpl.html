@@ -1,3 +1,41 @@
-<div class="container">
-Domains
+<div class="container" ng-init="createView = false">
+<h3>My Domains </h3>
+<div class = "container">
+<div class = "row">
+  <button class="btn btn-primary" ng-click="createView = true">Create Domain</button>
+</div>
+<div ng-show="createView" class = "row">
+  Create View Here
+</div>
+<div class= "row">
+  <div class="col-md-2">
+    <span>Id</span>
+  </div>
+  <div class = "col-md-2">
+    <span>Name</span>
+  </div>
+  <div>
+    <span>Code</span>
+  </div>
+</div>
+<div ng-if="!domains.length"> No Domains</div>
+<div ng-repeat="domain in domains" class= "row">
+    <div class="col-md-2">
+      <span>{{domain.domainId}}</span>
+    </div>
+    <div class = "col-md-2">
+      <span  editable-text="domain.name">{{domain.name}}</span>
+    </div>
+    <div class = "col-md-2">
+      <span editable-text="domain.code">{{domain.code}}</span>
+    </div>
+    <div class = "col-md-2">
+      <button class="btn btn-primary" ng-click="saveDomain(domain)">
+        Update
+      </button>
+    </div>
+
+</div>
+</div>
+
 </div>
