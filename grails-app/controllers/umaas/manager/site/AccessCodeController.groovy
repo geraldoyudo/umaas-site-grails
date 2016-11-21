@@ -69,4 +69,14 @@ class AccessCodeController {
 
         render status: NO_CONTENT
     }
+
+    def listByUser(long uid, Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond AccessCode.where{
+          userId == uid
+          }.list(params), model:[accessCodeCount:
+          AccessCode.where{
+            userId == uid
+            }.count()]
+    }
 }

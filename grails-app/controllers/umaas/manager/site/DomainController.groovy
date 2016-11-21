@@ -69,4 +69,13 @@ class DomainController {
 
         render status: NO_CONTENT
     }
+
+    def listByUser(long uid, Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Domain.where{
+          userId == uid
+          }.list(params), model:[domainCount: Domain.where{
+            userId == uid
+            }.count()]
+    }
 }
