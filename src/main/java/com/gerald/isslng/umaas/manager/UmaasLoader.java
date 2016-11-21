@@ -30,14 +30,14 @@ public class UmaasLoader {
 	private String domainId;
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	public Map<String,Object> loadDomain(String id){
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(umaasCoreUrl +
 				"/domain/domains/")
 				.path(id);
 		return load(builder.build().toUriString());
 	}
-	
+
 	public Map<String,Object> loadAccessCode(String id){
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(umaasCoreUrl +
 				"/domain/domainAccessCodes/")
@@ -47,7 +47,7 @@ public class UmaasLoader {
 		code.put("domains", domains);
 		return code;
 	}
-	
+
 	public Map<String,Object> saveAccessCode(String id, final Map<String,Object> code){
 		Map<String,Object> accessCode = new HashMap<>(code);
 		List<String> domains = (List<String>) accessCode.remove("domains");
@@ -57,30 +57,30 @@ public class UmaasLoader {
 		setDomainList(id, domains);
 		return save(builder.build().toUriString(), accessCode);
 	}
-	
-	
+
+
 	public Map<String,Object> saveDomain(String id, Map<String,Object> domain){
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(umaasCoreUrl +
 				"/domain/domains/")
 				.path(id);
 		return save(builder.build().toUriString(), domain);
 	}
-	
+
 	public Map<String,Object> createDomain(Map<String,Object> domain){
 		return create(umaasCoreUrl + "/domain/domains", domain);
 	}
-	
+
 	public Map<String,Object> createAccessCode(Map<String,Object> code){
 		return create(umaasCoreUrl + "/domain/domainAccessCodes", code);
 	}
-	
+
 	private Map<String,Object> load(String url){
-		
+
 		HttpEntity<?> entity = getHttpEntity();
 		Map<String,Object> ret = restTemplate.exchange(
-		        url, 
-		        HttpMethod.GET, 
-		        entity, 
+		        url,
+		        HttpMethod.GET,
+		        entity,
 		        Map.class).getBody();
 		return ret;
 	}
@@ -88,18 +88,18 @@ public class UmaasLoader {
 	private Map<String,Object> save(String url, Map<String,Object> object){
 		HttpEntity<?> entity = getHttpEntity(object);
 		Map<String,Object> ret = restTemplate.exchange(
-		        url, 
-		        HttpMethod.PATCH, 
-		        entity, 
+		        url,
+		        HttpMethod.PATCH,
+		        entity,
 		        Map.class).getBody();
 		return ret;
 	}
 	private Map<String,Object> create(String url, Map<String,Object> object){
 		HttpEntity<?> entity = getHttpEntity(object);
 		Map<String,Object> ret = restTemplate.exchange(
-		        url, 
-		        HttpMethod.POST, 
-		        entity, 
+		        url,
+		        HttpMethod.POST,
+		        entity,
 		        Map.class).getBody();
 		return ret;
 	}
@@ -110,7 +110,7 @@ public class UmaasLoader {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		return new HttpEntity<T>(request, headers);
 	}
-	
+
 	private HttpEntity<?> getHttpEntity(){
 		HttpHeaders headers = new HttpHeaders();
 		headers.set(HttpHeaders.AUTHORIZATION, "Basic " + Base64Utils.encodeToString(
@@ -118,13 +118,13 @@ public class UmaasLoader {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		return new HttpEntity(headers);
 	}
-	
+
 	private List<String> getDomainList(String accessCodeId){
 		//System.out.println("Getting mappings");
 		/*
-		 * steps 
+		 * steps
 		 * 1. get mapping with entityType= ALL, entityId = "DOMAIN and priviledge = UPDATE
-		 * get domains property in the meta 
+		 * get domains property in the meta
 		 * return it
 		 */
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(umaasCoreUrl +
@@ -146,20 +146,20 @@ public class UmaasLoader {
 				domains.addAll(domainList);
 		}catch(NullPointerException ex){
 			// do nothing
-			ex.printStackTrace();
+			//ex.printStackTrace();
 		}catch (HttpClientErrorException ex){
-			ex.printStackTrace();
+		//	ex.printStackTrace();
 			if(!ex.getStatusCode().equals(HttpStatus.NOT_FOUND))
 				throw ex;
-			
+
 		}
 		return domains;
 	}
 	private void setDomainList(String accessCodeId, List<String> domainList){
 		/*
-		 * steps 
+		 * steps
 		 * 1. get mapping with entityType= ALL, entityId = "DOMAIN and priviledge = UPDATE
-		 * get domains property in the meta 
+		 * get domains property in the meta
 		 * return it
 		 */
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(umaasCoreUrl +
@@ -168,7 +168,7 @@ public class UmaasLoader {
 				.queryParam("entityType", "ALL")
 				.queryParam("entityId", "domain")
 				.queryParam("priviledge", "UPDATE");
-		
+
 		String id = null;
 		try{
 			Map<String,Object>  mapping =  load(builder.build().toUriString());
@@ -192,11 +192,11 @@ public class UmaasLoader {
 			String createUrl =  umaasCoreUrl + "/domain/domainAccessCodeMappings/";
 			create(createUrl, mapping);
 		}
-		
-		if(id != null) 
+
+		if(id != null)
 			saveDomainMapping(id, domainList);
 	}
-		
+
 	private void saveDomainMapping(String domainMappingId, List<String> domainList){
 		List<String> list = new ArrayList<>();
 		if(domainList != null){
@@ -272,4 +272,3 @@ public class UmaasLoader {
 	}
 
 }
-
