@@ -2,7 +2,7 @@
 //= require /angular/angular-resource
 
 angular
-    .module("umaas.manager.site.accessCode")
+    .module("umaas.manager.site.accounts")
     .factory("AccessCode", AccessCode);
 
 function AccessCode($resource) {
@@ -11,7 +11,9 @@ function AccessCode($resource) {
         {"id": "@id"},
         {"update": {method: "PUT"},
          "query": {method: "GET", isArray: true},
-         "get": {method: 'GET'}}
+         "get": {method: 'GET'},
+          "listByUser": {method: 'GET',
+          url:"accessCode/listByUser?uid=:uid", isArray: true}}
     );
 
     AccessCode.list = AccessCode.query;

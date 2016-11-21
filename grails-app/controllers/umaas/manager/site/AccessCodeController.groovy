@@ -70,7 +70,7 @@ class AccessCodeController {
         render status: NO_CONTENT
     }
 
-    def listByUser(long uid, Integer max) {
+    def listByUser(String uid, Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond AccessCode.where{
           userId == uid

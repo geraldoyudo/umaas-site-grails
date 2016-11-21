@@ -2,7 +2,7 @@ package umaas.manager.site
 
 class Domain {
     String domainId
-    long userId
+    String userId
     String name
     String code
     transient umaasLoader

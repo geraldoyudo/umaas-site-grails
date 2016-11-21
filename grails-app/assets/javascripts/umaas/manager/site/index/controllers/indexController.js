@@ -12,6 +12,7 @@ function IndexController(applicationDataFactory, contextPath,
         console.log(resp);
         if(resp.data && resp.data.id){
           vm.user = resp.data;
+          $rootScope.user = resp.data;
           $rootScope.$emit('app.newUser', resp.data);
         }
       });

@@ -10,7 +10,5 @@
 angular.module("umaas.manager.site", [
     "umaas.manager.site.core",
     "umaas.manager.site.index",
-    "umaas.manager.site.accounts",
-    "umaas.manager.site.domain",
-    "umaas.manager.site.accessCode"
+    "umaas.manager.site.accounts"
 ]);

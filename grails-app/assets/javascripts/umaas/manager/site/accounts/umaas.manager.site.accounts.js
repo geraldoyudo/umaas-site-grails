@@ -16,7 +16,8 @@ function config($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('account', {
             url: "/account",
-            templateUrl: "/umaas/manager/site/accounts/index.html"
+            templateUrl: "/umaas/manager/site/accounts/index.html",
+            controller: "AccountsController"
         })
         .state('account.dashboard', {
             url: "/account/dashboard",

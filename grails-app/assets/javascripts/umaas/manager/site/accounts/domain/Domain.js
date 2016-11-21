@@ -2,7 +2,7 @@
 //= require /angular/angular-resource
 
 angular
-    .module("umaas.manager.site.domain")
+    .module("umaas.manager.site.accounts")
     .factory("Domain", Domain);
 
 function Domain($resource) {
@@ -11,7 +11,9 @@ function Domain($resource) {
         {"id": "@id"},
         {"update": {method: "PUT"},
          "query": {method: "GET", isArray: true},
-         "get": {method: 'GET'}}
+         "get": {method: 'GET'},
+          "listByUser": {method: 'GET',
+          url:"domain/listByUser?uid=:uid", isArray: true}}
     );
 
     Domain.list = Domain.query;

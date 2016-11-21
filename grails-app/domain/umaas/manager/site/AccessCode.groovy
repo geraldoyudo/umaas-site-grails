@@ -2,7 +2,7 @@ package umaas.manager.site
 
 class AccessCode {
     String codeId
-    long userId
+    String userId
     String code
     Map domains
 
@@ -12,7 +12,7 @@ class AccessCode {
       code (bindable:true, nullable:true)
       codeId nullable:true
     }
-    
+
     def onLoad(){
       print "Before Loading"
       println this.codeId;
