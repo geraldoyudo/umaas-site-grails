@@ -1,11 +1,18 @@
-<div class="container" ng-init="createView = false">
+<div class="container" ng-init="createAccessCodeView = false">
 <h3>My Domains </h3>
 <div class = "container">
 <div class = "row">
-  <button class="btn btn-primary" ng-click="createView = true">Create Domain</button>
+  <button class="btn btn-primary" ng-click="createDomainView = true">Create Domain</button>
 </div>
-<div ng-show="createView" class = "row">
-  Create View Here
+<div ng-if="createDomainView" class = "row" ng-init="newDomain =newDomainModel()">
+  <formly-form
+   model="newDomain" fields="newDomainField"
+  form="domainForm">
+    <button type="submit" ng-disabled="domainForm.$invalid"
+      ng-click="createDomain(newDomain); createDomainView = false">
+      Submit
+    </button>
+  </formly-form>
 </div>
 <div class= "row">
   <div class="col-md-2">

@@ -29,4 +29,18 @@ function formFactory (){
           }
     ];
   }
+
+  self.createAccessCode = function (){
+    return [
+        {
+            "type": "input",
+            "key": "code",
+            "templateOptions": {
+              "type": "text",
+              "placeholder": "Code",
+              "label": "Code"
+            }
+          }
+    ];
+  }
 }

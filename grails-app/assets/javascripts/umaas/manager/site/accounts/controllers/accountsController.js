@@ -42,6 +42,7 @@ function AccountsController(Domain, AccessCode,
   console.log("Initializing accounts controller");
 
   $scope.newDomainField = FormFactory.createDomain();
+  $scope.newAccessCodeField = FormFactory.createAccessCode();
   $scope.saveDomain = function(domain){
     Domain.update({id:domain.id}, domain).$promise.then(function(){
       alert("Update Successful");
@@ -52,5 +53,23 @@ function AccountsController(Domain, AccessCode,
       alert("Update Successful");
     });
   }
-  
+  $scope.createDomain = function(domain){
+    Domain.save(domain).$promise.then(function(d){
+      alert("Domain created successfully");
+      $scope.domains.push(d);
+    });
+  }
+  $scope.createAccessCode = function(accessCode){
+    AccessCode.save(accessCode).$promise.then(function(ac){
+      alert("Access Code created successfully");
+      $scope.accessCodes.push(ac);
+    });
+  }
+
+  $scope.newAccessCodeModel = function(){
+    return {code: "", userId: $scope.user.id};
+  }
+  $scope.newDomainModel = function(){
+    return {code: "", name: "", userId: $scope.user.id};
+  }
 }

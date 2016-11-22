@@ -4,7 +4,7 @@ class AccessCode {
     String codeId
     String userId
     String code
-    Map domains
+    Set<String> domains
 
     transient umaasLoader
     //static transients = ['code']
@@ -30,6 +30,6 @@ class AccessCode {
 
     def beforeUpdate(){
       print "Before Updating"
-      umaasLoader.saveDomain(this.codeId, [name: this.name, code: this.code]);
+      umaasLoader.saveAccessCode(this.codeId, [code: this.code, domains: this.domains]);
     }
 }
