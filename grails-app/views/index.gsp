@@ -66,7 +66,9 @@
                         <a ui-sref="login" aria-haspopup="true" aria-expanded="false">Log In</span></a>
                     </li>
                     <li ng-if="!indexCtrl.user" class="button">
-                        <a href="/register" aria-haspopup="true" aria-expanded="false">Sign Up</span></a>
+                        <a
+                        ng-href="{{indexCtrl.applicationData.umaasRegistration + '?domain=' + indexCtrl.applicationData.domain}}"
+                        aria-haspopup="true" aria-expanded="false">Sign Up</span></a>
                     </li>
                     <li ng-if="indexCtrl.user" class="button">
                         <a href="/logout" aria-haspopup="true" aria-expanded="false">Log Out</span></a>

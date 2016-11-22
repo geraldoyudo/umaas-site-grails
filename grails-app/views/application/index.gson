@@ -11,6 +11,6 @@ model {
 json {
 	umaasRegistration 'http://localhost:8040/umaas-registration/app/register'
 	umaasAdministration 'http://localhost:8040/umaas-admin/app/admin'
-	domain '1111'
+	domain 'umaas-manager'
 
 }
