@@ -26,6 +26,7 @@ public class UmaasLoaderTest {
 	public void testCreateDomain(){
 		Map<String,Object> domain = new HashMap<>();
 		domain.put("code", "code" + System.currentTimeMillis());
+		domain.put("name", "name" + System.currentTimeMillis());
 		domain = loader.createDomain(domain);
 		assertNotNull(domain);
 		System.out.println(domain);

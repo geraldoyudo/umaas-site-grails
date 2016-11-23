@@ -1,8 +1,8 @@
 package com.gerald.isslng.umaas.manager;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +20,13 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @Component("umaasLoader")
 public class UmaasLoader {
-	@Value("${umaas.core:http://localhost:8040/umaas-core}")
+	@Value("${umaas.core}")
 	private String umaasCoreUrl;
-	@Value("${umaas.access.id:0000}")
+	@Value("${umaas.access.id}")
 	private String accessCodeId;
-	@Value("${umaas.access.code:0000}")
+	@Value("${umaas.access.code}")
 	private String accessCode;
-	@Value("${umaas.domain.id:1111}")
+	@Value("${umaas.domain.id}")
 	private String domainId;
 	@Autowired
 	private RestTemplate restTemplate;
@@ -43,14 +43,14 @@ public class UmaasLoader {
 				"/domain/domainAccessCodes/")
 				.path(id);
 		Map<String,Object> code =  load(builder.build().toUriString());
-		List<String> domains = getDomainList(id);
+		Collection<String> domains = getDomainList(id);
 		code.put("domains", domains);
 		return code;
 	}
 
 	public Map<String,Object> saveAccessCode(String id, final Map<String,Object> code){
 		Map<String,Object> accessCode = new HashMap<>(code);
-		List<String> domains = (List<String>) accessCode.remove("domains");
+		Collection<String> domains = (Collection<String>) accessCode.remove("domains");
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(umaasCoreUrl +
 				"/domain/domainAccessCodes/")
 				.path(id);
@@ -119,7 +119,7 @@ public class UmaasLoader {
 		return new HttpEntity(headers);
 	}
 
-	private List<String> getDomainList(String accessCodeId){
+	private Collection<String> getDomainList(String accessCodeId){
 		//System.out.println("Getting mappings");
 		/*
 		 * steps
@@ -133,14 +133,14 @@ public class UmaasLoader {
 				.queryParam("entityType", "ALL")
 				.queryParam("entityId", "domain")
 				.queryParam("priviledge", "UPDATE");
-		List<String> domains = new ArrayList<>();
+		Collection<String> domains = new ArrayList<>();
 		try{
 			String url = builder.build().toUriString();
 			//System.out.println(url);
 			Map<String,Object>  mapping =  load(url);
 			//System.out.println("Domain mapping");
 			//System.out.println(mapping);
-			List<String> domainList  = (List<String>) ((Map<String,Object>)
+			Collection<String> domainList  = (Collection<String>) ((Map<String,Object>)
 					mapping.get("meta")).get("domains");
 			if(domainList != null)
 				domains.addAll(domainList);
@@ -155,7 +155,7 @@ public class UmaasLoader {
 		}
 		return domains;
 	}
-	private void setDomainList(String accessCodeId, List<String> domainList){
+	private void setDomainList(String accessCodeId, Collection<String> domainList){
 		/*
 		 * steps
 		 * 1. get mapping with entityType= ALL, entityId = "DOMAIN and priviledge = UPDATE
@@ -200,8 +200,8 @@ public class UmaasLoader {
 			saveDomainMapping(id, domainList);
 	}
 
-	private void saveDomainMapping(String domainMappingId, List<String> domainList){
-		List<String> list = new ArrayList<>();
+	private void saveDomainMapping(String domainMappingId, Collection<String> domainList){
+		Collection<String> list = new ArrayList<>();
 		if(domainList != null){
 			list.addAll(domainList);
 		}

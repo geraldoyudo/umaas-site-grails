@@ -85,8 +85,8 @@ environments:
               name: umaas-manager
               id: 1111
             access:
-              id: 0000
-              code: 0000
+              id: '0000'
+              code: '0000'
             docs: http://localhost:8082/
         dataSource:
             dbCreate: create-drop

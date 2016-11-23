@@ -26,7 +26,8 @@ class Domain {
     }
 
     def beforeInsert(){
-      print "Before Inserting"
+      println "Before Inserting"
+      println "${umaasLoader.accessCodeId}  ${umaasLoader.accessCode}"
       Map props = umaasLoader.createDomain([name: this.name, code: this.code]);
       def segments = props._links.self.href.split('/') as Stack
       this.domainId = segments.pop();

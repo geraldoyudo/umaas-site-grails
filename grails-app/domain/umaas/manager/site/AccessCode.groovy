@@ -29,7 +29,8 @@ class AccessCode {
     }
 
     def beforeUpdate(){
-      print "Before Updating"
+      println "Before Updating"
+      println this.domains;
       umaasLoader.saveAccessCode(this.codeId, [code: this.code, domains: this.domains]);
     }
 }
