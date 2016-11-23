@@ -43,9 +43,9 @@
                     <li class="dropdown" uib-dropdown>
                         <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
                         <ul class="dropdown-menu" uib-dropdown-menu>
-                            <li><a href="/assets/getting_started.html">Getting Started</a></li>
-                            <li><a href="/assets/reference.html">Reference</a></li>
-                            <li><a href="/assets/tutorials.html">Tutorials</a></li>
+                            <li><a ng-href="{{indexCtrl.applicationData.docs + 'getting_started/index.html'}}">Getting Started</a></li>
+                            <li><a  ng-href="{{indexCtrl.applicationData.docs + 'reference/index.html'}}">Reference</a></li>
+                            <li><a  ng-href="{{indexCtrl.applicationData.docs + 'tutorials/index.html'}}">Tutorials</a></li>
                         </ul>
                     </li>
                     <li ng-if="indexCtrl.user" class="dropdown" uib-dropdown>

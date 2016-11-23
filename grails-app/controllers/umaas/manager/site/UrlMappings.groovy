@@ -22,5 +22,9 @@ class UrlMappings {
         "500"(view: '/error')
         "404"(view: '/notFound')
         get "/$controller/listByUser"(action:"listByUser")
+        get "/documentation/gettingStarted" (controller: "documentation", action: "gettingStarted")
+        get "/documentation/tutorials" (controller: "documentation", action: "tutorials")
+        get "/documentation/reference" (controller: "documentation", action: "reference")
+
     }
 }

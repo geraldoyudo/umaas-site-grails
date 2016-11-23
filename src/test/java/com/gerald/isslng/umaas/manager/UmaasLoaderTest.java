@@ -17,7 +17,7 @@ public class UmaasLoaderTest {
 		loader.setAccessCode("0000");
 		loader.setAccessCodeId("0000");
 		loader.setDomainId("1111");
-		loader.setUmaasCoreUrl("http://localhost:8090");
+		loader.setUmaasCoreUrl("http://localhost:8040/umaas-core");
 		GeneralConfiguration config = new  GeneralConfiguration();
 		loader.setRestTemplate(config.restTemplate());
 	}
@@ -72,18 +72,9 @@ public class UmaasLoaderTest {
 	public void testSaveAccessCode() {
 		Map<String,Object> value = new HashMap<>();
 		Map<String,Object> ac = loader.loadAccessCode("57f77af85e61ed1bc4f34fa5");
-		String code = ac.get("code").toString();
-		value.put("code", "test");
-		value.put("domains", Arrays.asList("domain1", "domain2", "domain3"));
+		value.put("domains", Arrays.asList("domain1-1", "domain2-1", "domain3-1"));
 		ac = loader.saveAccessCode("57f77af85e61ed1bc4f34fa5", value);
 		assertNotNull(ac);
-		System.out.println(ac);
-		assertEquals("test", ac.get("code").toString());
-		value.put("code", code);
-		System.out.println("Saving for the last time"); 
-		System.out.println(value);
-		loader.saveAccessCode("57f77af85e61ed1bc4f34fa5", value);
-		System.out.println(ac);
 	}
 
 }

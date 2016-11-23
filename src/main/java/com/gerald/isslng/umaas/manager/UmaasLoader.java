@@ -22,11 +22,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class UmaasLoader {
 	@Value("${umaas.core:http://localhost:8040/umaas-core}")
 	private String umaasCoreUrl;
-	@Value("${umaas.manager.access.id:0000}")
+	@Value("${umaas.access.id:0000}")
 	private String accessCodeId;
-	@Value("${umaas.manager.access.code:0000}")
+	@Value("${umaas.access.code:0000}")
 	private String accessCode;
-	@Value("${umaas.manager.domain.id:1111}")
+	@Value("${umaas.domain.id:1111}")
 	private String domainId;
 	@Autowired
 	private RestTemplate restTemplate;
@@ -170,8 +170,10 @@ public class UmaasLoader {
 				.queryParam("priviledge", "UPDATE");
 
 		String id = null;
+		String url = builder.build().toUriString();
+		System.out.println(url);
 		try{
-			Map<String,Object>  mapping =  load(builder.build().toUriString());
+			Map<String,Object>  mapping =  load(url);
 			String[] segments = ((Map<String,Object>)((Map<String,Object>)
 					mapping.get("_links"))
 					.get("self")).get("href").toString().split("/");
@@ -184,12 +186,13 @@ public class UmaasLoader {
 			Map<String,Object> mapping = new HashMap<>();
 			mapping.put("entityId", "domain");
 			mapping.put("entityType", "ALL");
-			mapping.put("accessCode", "/domain/domainAccessCodes" + accessCodeId);
+			mapping.put("accessCode", "/domain/domainAccessCodes/" + accessCodeId);
 			mapping.put("priviledge", "UPDATE");
 			Map<String,Object> meta = new HashMap<>();
 			meta.put("domains", domainList);
 			mapping.put("meta", meta);
-			String createUrl =  umaasCoreUrl + "/domain/domainAccessCodeMappings/";
+			System.out.println(mapping);
+			String createUrl =  umaasCoreUrl + "/domain/domainAccessCodeMappings";
 			create(createUrl, mapping);
 		}
 

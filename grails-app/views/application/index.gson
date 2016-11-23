@@ -6,11 +6,13 @@ import org.grails.core.artefact.*
 model {
 	String umaasRegistration
 	String umaasAdministration
+	String domain
+	String docs
 }
 
 json {
-	umaasRegistration 'http://localhost:8040/umaas-registration/app/register'
-	umaasAdministration 'http://localhost:8040/umaas-admin/app/admin'
-	domain 'umaas-manager'
-
+	umaasRegistration umaasRegistration
+	umaasAdministration umaasAdministration
+	domain domain
+	docs docs
 }

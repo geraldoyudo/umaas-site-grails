@@ -38,20 +38,20 @@ grails:
         types:
             json:
               - application/json
-              - text/json   
+              - text/json
             hal:
               - application/hal+json
-              - application/hal+xml  
+              - application/hal+xml
             xml:
               - text/xml
-              - application/xml                                 
+              - application/xml
             atom: application/atom+xml
             css: text/css
             csv: text/csv
             js: text/javascript
             rss: application/rss+xml
             text: text/plain
-            all: '*/*'            
+            all: '*/*'
     urlmapping:
         cache:
             maxsize: 1000
@@ -77,6 +77,17 @@ dataSource:
 
 environments:
     development:
+        umaas:
+            registration: http://localhost:8040/umaas-registration/app/register
+            admin: http://localhost:8040/umaas-admin/app/admin
+            core: http://localhost:8040/umaas-core
+            domain:
+              name: umaas-manager
+              id: 1111
+            access:
+              id: 0000
+              code: 0000
+            docs: http://localhost:8082/
         dataSource:
             dbCreate: create-drop
             url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE

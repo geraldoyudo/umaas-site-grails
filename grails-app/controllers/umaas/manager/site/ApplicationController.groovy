@@ -9,12 +9,18 @@ class ApplicationController implements PluginManagerAware {
 
     GrailsApplication grailsApplication
     GrailsPluginManager pluginManager
-    @Value('${umaas.registration:http://localhost:8040/umaas-registration/app/register}')
+    @Value('${umaas.registration}')
     String umaasRegistration;
-    @Value('${umaas.admin:http://localhost:8040/umaas-admin/app/admin}')
+    @Value('${umaas.admin}')
     String umaasAdministration;
+    @Value('${umaas.domain.name}')
+    String domain;
+    @Value('${umaas.docs}')
+    String docs;
     def index() {
-          println "${umaasAdministration}  ${umaasRegistration}"
-          [umaasRegistration: umaasRegistration, umaasAdmin: umaasAdministration]
+          [umaasRegistration: umaasRegistration,
+          umaasAdministration: umaasAdministration,
+          domain: domain,
+          docs: docs]
     }
 }
