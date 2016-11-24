@@ -1,62 +1,110 @@
-<div class="container">
-Dashboard
+<md-content layout-fill>
+  <md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools">
+          Dashboard
+        </div>
+  </md-toolbar>
+  <div layout="row" layout-margin="5%">
+  <md-card flex>
+  <md-card-header>
+    <md-card-header-text>
+      <span class="md-title">Number of Domains</span>
+    </md-card-header-text>
+  </md-card-header>
+  <md-card-content>
+    <p>
+     3/4
+    </p>
+  </md-card-content>
+</md-card>
+<md-card flex>
+<md-card-header>
+  <md-card-header-text>
+    <span class="md-title">Number of Access Codes</span>
+  </md-card-header-text>
+</md-card-header>
+<md-card-content>
+  <p>
+   3/4
+  </p>
+</md-card-content>
+</md-card>
+<md-card flex>
+<md-card-header>
+  <md-card-header-text>
+    <span class="md-title">Total Memory Size</span>
+  </md-card-header-text>
+</md-card-header>
+<md-card-content>
+  <p>
+   3408MB/1GB
+  </p>
+</md-card-content>
+</md-card>
+  </div>
 
-<div class="container">
-<h3>My Domains </h3>
-<div>
-<div class= "row">
-  <div class="col-md-2">
-    <span>Id</span>
-  </div>
-  <div class = "col-md-2">
-    <span>Name</span>
-  </div>
-  <div>
-    <span>Code</span>
-  </div>
-</div>
-<div ng-if="!domains.length"> No Domains</div>
-<div ng-repeat="domain in domains" class= "row">
-    <div class="col-md-2">
-      <span>{{domain.domainId}}</span>
-    </div>
-    <div class = "col-md-2">
-      <span>{{domain.name}}</span>
-    </div>
-    <div class = "col-md-2">
-      <span>{{domain.code}}</span>
-    </div>
-    <div class="col-md-2" >
-      <a class="button button-primary"
-      ng-href="{{indexCtrl.applicationData.umaasAdministration + '?domain='+ domain.name}}">Manage </a>
-    </div>
-    <div class="col-md-2">
-      <a class="button button-primary"
-      ng-href="{{indexCtrl.applicationData.umaasRegistration + '?domain='+ domain.name}}">Register User</a>
-    </div>
+  <div layout="row" layout-margin="10%">
+  <md-card flex>
+  <md-card-header>
+    <md-toolbar class="md-hue-2">
+          <div class="md-toolbar-tools">
+            My Domains
+          </div>
+    </md-toolbar>
+  </md-card-header>
+  <md-card-content>
+    <div ng-if="!domains.length" md-colors="{background: 'primary'}"> No Domains</div>
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="domain in domains">
+        <div class="md-list-item-text">
+          <h3>{{domain.name}}</h3>
+          <div layout="row">
+            <div flex>ID:  {{domain.domainId}}</div>
+            <div flex>Code:  {{domain.code}}</div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-button ng-href="{{indexCtrl.applicationData.umaasAdministration + '?domain='+ domain.name}}">
+                Manage
+              </md-button>
+            </div>
+            <div flex>
+              <md-button ng-href="{{indexCtrl.applicationData.umaasRegistration + '?domain='+ domain.name}}">
+                Register User
+              </md-button>
+            </div>
+          </div>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-card-content>
+</md-card>
+<md-card flex>
+<md-card-header>
+  <md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools">
+          My Access Codes
+        </div>
+  </md-toolbar>
+</md-card-header>
+<md-card-content>
+  <div ng-if="!accessCodes.length" md-colors="{background: 'primary'}"> No Access Codes</div>
+  <md-list>
+    <md-list-item class="md-3-line" ng-repeat="accessCode in accessCodes">
+      <div class="md-list-item-text">
+        <h3>{{accessCode.codeId}}</h3>
+        <div layout="row">
+          Code:  {{accessCode.code}}</div>
+        </div>
+        <div layout="row" layout-wrap layout-padding="3%">
+          <span ng-repeat="domain in accessCode.domains"> domain.name</span>
+        </div>
+      </div>
+    </md-list-item>
+  </md-list>
+
+</md-card-content>
+</md-card>
 
 </div>
-</div>
-
-<h3>My Access Codes </h3>
-<div>
-<div class= "row">
-  <div class="col-md-2">
-    <span>Id</span>
-  </div>
-  <div class = "col-md-2">
-    <span>Code</span>
-  </div>
-</div>
-<div ng-if="!accessCodes.length"> No Domains</div>
-<div ng-repeat="accessCode in accessCodes" class= "row">
-    <div class="col-md-2">
-      <span>{{accessCode.codeId}}</span>
-    </div>
-    <div class = "col-md-2">
-      <span>{{accessCode.code}}</span>
-    </div>
-</div>
-</div>
-</div>
-</div>
+</md-content>

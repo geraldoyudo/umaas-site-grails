@@ -21,70 +21,99 @@
     </script>
 </head>
 
-<body ng-app="umaas.manager.site" ng-controller="IndexController as indexCtrl">
+<body ng-app="umaas.manager.site" ng-controller="IndexController as indexCtrl" ng-cloak="">
+    <div layout="row">
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" ng-click="navExpanded = !navExpanded">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/#">
-                    <i class="fa grails-icon">
-                        <asset:image src="grails-cupsonly-logo-white.svg"/>
-                    </i> UMAAS
-                </a>
-            </div>
-            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;" uib-collapse="!navExpanded">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown" uib-dropdown>
-                        <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
-                        <ul class="dropdown-menu" uib-dropdown-menu>
-                            <li><a ng-href="{{indexCtrl.applicationData.docs + 'getting_started/index.html'}}">Getting Started</a></li>
-                            <li><a  ng-href="{{indexCtrl.applicationData.docs + 'reference/index.html'}}">Reference</a></li>
-                            <li><a  ng-href="{{indexCtrl.applicationData.docs + 'tutorials/index.html'}}">Tutorials</a></li>
-                        </ul>
-                    </li>
-                    <li ng-if="indexCtrl.user" class="dropdown" uib-dropdown>
-                        <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
-                        <ul class="dropdown-menu" uib-dropdown-menu>
-                            <li><a ui-sref="account.dashboard">Dashboard</a></li>
-                            <li><a ui-sref="account.domains">My Domains</a></li>
-                            <li><a ui-sref="account.accessCodes">My Access Codes</a></li>
-                        </ul>
-                    </li>
-                    <li class="button">
-                        <a ui-sref="community" aria-haspopup="true" aria-expanded="false">Community</span></a>
-                    </li>
-                    <li class="button">
-                        <a ui-sref="about" aria-haspopup="true" aria-expanded="false">About Us</span></a>
-                    </li>
-                    <li ng-if="!indexCtrl.user" class="button">
-                        <a ui-sref="login" aria-haspopup="true" aria-expanded="false">Log In</span></a>
-                    </li>
-                    <li ng-if="!indexCtrl.user" class="button">
-                        <a
-                        ng-href="{{indexCtrl.applicationData.umaasRegistration + '?domain=' + indexCtrl.applicationData.domain}}"
-                        aria-haspopup="true" aria-expanded="false">Sign Up</span></a>
-                    </li>
-                    <li ng-if="indexCtrl.user" class="button">
-                        <a href="/logout" aria-haspopup="true" aria-expanded="false">Log Out</span></a>
-                    </li>
-                </ul>
-            </div>
+      <div flex>
+        <img src="/assets/umaas.png" alt="Grails" class="logo" style="width:40px; height:40px"/>
+        <md-button style="margin-top:auto" href="#">UMAAS</md-button>
+      </div>
+        <md-menu>
+          <md-button aria-label="Documentation Menu" class="md-primary" ng-click="$mdOpenMenu($event)">
+            <span md-menu-origin>Documentation</span>
+          </md-button>
+          <md-menu-content width="6">
+            <md-menu-item >
+              <md-button ng-href="{{indexCtrl.applicationData.docs + 'getting_started/index.html'}}">
+                Getting Started
+              </md-button>
+            </md-menu-item>
+            <md-menu-item >
+              <md-button ng-href="{{indexCtrl.applicationData.docs + 'tutorials/index.html'}}">
+                Tutorials
+              </md-button>
+            </md-menu-item>
+            <md-menu-item >
+              <md-button ng-href="{{indexCtrl.applicationData.docs + 'reference/index.html'}}">
+                Reference
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+        <md-menu ng-if="indexCtrl.user">
+          <md-button aria-label="Accounts Menu" class="md-primary" ng-click="$mdOpenMenu($event)">
+            <span md-menu-origin>My Accounts</span>
+          </md-button>
+          <md-menu-content width="6">
+            <md-menu-item >
+              <md-button ui-sref="account.dashboard">
+                Dashboard
+              </md-button>
+            </md-menu-item>
+            <md-menu-item >
+              <md-button ui-sref="account.domains">
+                Domains
+              </md-button>
+            </md-menu-item>
+            <md-menu-item >
+              <md-button ui-sref="account.accessCodes">
+                Access Codes
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      <div>
+        <md-nav-bar  md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+             <md-nav-item md-nav-sref="community" name="community">Community</md-nav-item>
+             <md-nav-item md-nav-sref="about" name="about">About</md-nav-item>
+             <md-nav-item ng-if="!indexCtrl.user"  md-nav-sref="login" name="login">Log In</md-nav-item>
+             <md-nav-item ng-if="!indexCtrl.user"
+             md-nav-href="{{indexCtrl.applicationData.umaasRegistration + '?domain=' + indexCtrl.applicationData.domain}}"
+             name="signup">Sign Up</md-nav-item>
+             <md-nav-item ng-if="indexCtrl.user"  md-nav-href="/logout" name="logout">Log Out</md-nav-item>
+        </md-nav-bar>
+      </div>
+
+    </div>
+    <md-content class="md-padding" layout-fill>
+      <div ui-view ></div>
+
+    </md-content>
+    <footer md-colors="{background: 'primary'}">
+      <div layout="row" class="footer" flex>
+        <div layout="column" flex>
+          <span>UMAAS.IO</span>
+          <a href="#">Privacy</a>
+          <a href="#">Terms of Service</a>
         </div>
-    </div>
-    <div ui-view></div>
-
-    <div class="footer" role="contentinfo"></div>
-
-    <div id="spinner" class="spinner" style="display:none;">
-        <g:message code="spinner.alt" default="Loading&hellip;"/>
-    </div>
-
+        <div layout="column" flex>
+          <span>COMPANY</span>
+          <a href="#">Product</a>
+          <a href="#">Team</a>
+          <a href="#">Partners</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div layout="column" flex>
+          <span>Platform</span>
+          <a href="#">Docs</a>
+          <a href="#">Blog</a>
+        </div>
+        <div layout="row" flex>
+          <a href="www.facebook.com">Facebook</a>
+          <a href="www.twitter.com">Twiter</a>
+        </div>
+      </div>
+    </footer>
     <asset:javascript src="/umaas/manager/site/umaas.manager.site.js" />
 </body>
 </html>

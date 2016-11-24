@@ -1,7 +1,4 @@
 //= wrapped
-//= require /angular/angular
-//= require /angular/ui-bootstrap-tpls
-//= require /angular/angular-ui-router
 //= require_self
 //= require_tree services
 //= require_tree controllers
@@ -10,12 +7,10 @@
 
 angular.module("umaas.manager.site.index", [
     "umaas.manager.site.core",
-    "ui.bootstrap.dropdown",
-    "ui.bootstrap.collapse",
     "ui.router",
     "xeditable",
     "formly",
-    "formlyBootstrap"
+    "ngMaterial"
 ])
 .config(config);
 

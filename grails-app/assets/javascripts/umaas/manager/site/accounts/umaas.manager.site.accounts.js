@@ -1,6 +1,4 @@
 //= wrapped
-//= require /angular/angular
-//= require /umaas/manager/site/core/umaas.manager.site.core
 //= require_self
 //= require_tree services
 //= require_tree controllers
