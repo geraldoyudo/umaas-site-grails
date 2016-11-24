@@ -10,7 +10,9 @@ angular.module("umaas.manager.site.index", [
     "ui.router",
     "xeditable",
     "formly",
-    "ngMaterial"
+    "ngMaterial",
+    "formlyMaterial",
+    "md.data.table"
 ])
 .config(config);
 

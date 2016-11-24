@@ -1,48 +1,49 @@
 <div class="container" ng-init="createAccessCodeView = false">
 <h3>My Domains </h3>
 <div class = "container">
+<div ng-if="!domains.length"> No Domains</div>
+<!-- exact table from live demo -->
+<md-table-container ng-if="domains.length">
+  <table md-table>
+    <thead md-head>
+      <tr md-row>
+        <th md-column ><span>Domain ID</span></th>
+        <th md-column><span>Domain Name</span></th>
+        <th md-column>Domain Code</th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="domain in domains">
+        <td md-cell>{{domain.domainId}}</td>
+        <td md-cell>{{domain.name}}</td>
+        <td md-cell>{{domain.code}}</td>
+        <td md-cell>
+          <md-button ng-href="{{indexCtrl.applicationData.umaasAdministration + '?domain='+ domain.name}}">
+            Manage
+          </md-button>
+        </td>
+        <td md-cell>
+          <md-button ng-href="{{indexCtrl.applicationData.umaasRegistration + '?domain='+ domain.name}}">
+            Register User
+          </md-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
 <div class = "row">
-  <button class="btn btn-primary" ng-click="createDomainView = true">Create Domain</button>
+  <md-button class="md-primary" ng-click="data.createDomainView = true">Create Domain</md-button>
 </div>
-<div ng-if="createDomainView" class = "row" ng-init="newDomain =newDomainModel()">
+<md-card ng-show="data.createDomainView" class = "row" ng-init="newDomain =newDomainModel()">
   <formly-form
    model="newDomain" fields="newDomainField"
   form="domainForm">
-    <button type="submit" ng-disabled="domainForm.$invalid"
-      ng-click="createDomain(newDomain); createDomainView = false">
+    <md-button type="submit" class="md-warn" ng-disabled="domainForm.$invalid"
+      ng-click="createDomain(newDomain); data.createDomainView = false">
       Submit
-    </button>
+    </md-button>
   </formly-form>
-</div>
-<div class= "row">
-  <div class="col-md-2">
-    <span>Id</span>
-  </div>
-  <div class = "col-md-2">
-    <span>Name</span>
-  </div>
-  <div>
-    <span>Code</span>
-  </div>
-</div>
-<div ng-if="!domains.length"> No Domains</div>
-<div ng-repeat="domain in domains" class= "row">
-    <div class="col-md-2">
-      <span>{{domain.domainId}}</span>
-    </div>
-    <div class = "col-md-2">
-      <span  editable-text="domain.name">{{domain.name}}</span>
-    </div>
-    <div class = "col-md-2">
-      <span editable-text="domain.code">{{domain.code}}</span>
-    </div>
-    <div class = "col-md-2">
-      <button class="btn btn-primary" ng-click="saveDomain(domain)">
-        Update
-      </button>
-    </div>
-
-</div>
+</md-card>
 </div>
 
 </div>

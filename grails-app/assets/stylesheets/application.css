@@ -8,6 +8,7 @@
 * compiled file, but it's generally better to create a new file per style scope.
 *
 *= require /angular-material/angular-material
+*= require /angular-material-data-table/dist/md-data-table
 *= require /angular-xeditable/dist/css/xeditable
 *= require main
 *= require_self

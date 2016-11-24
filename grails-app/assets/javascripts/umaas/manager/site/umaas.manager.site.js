@@ -9,6 +9,8 @@
 //= require /angular-material/angular-material
 //= require /api-check/dist/api-check
 //= require /angular-formly/dist/formly
+//= require /angular-formly-material/dist/formly-material
+//= require /angular-material-data-table/dist/md-data-table
 //= require /angular-xeditable/dist/js/xeditable
 //= require /umaas/manager/site/core/umaas.manager.site.core
 //= require /umaas/manager/site/index/umaas.manager.site.index

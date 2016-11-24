@@ -1,50 +1,43 @@
 <div class="container" ng-init="createAccessCodeView = false">
 <h3>Access Codes </h3>
 <div class = "container">
+<div ng-if="!accessCodes.length"> No Access Codes</div>
+<md-table-container ng-if="accessCodes.length">
+  <table md-table>
+    <thead md-head>
+      <tr md-row>
+        <th md-column ><span>ID</span></th>
+        <th md-column><span>Code</span></th>
+        <th md-column><span>Domains</span></th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="accessCode in accessCodes">
+        <td md-cell>{{accessCode.codeId}}</td>
+        <td md-cell>{{accessCode.code}}</td>
+        <td md-cell>
+          <md-select ng-model="accessCode.domains" multiple>
+            <md-option ng-repeat="domain in domains" value="{{domain.domainId}}">{{domain.name}}</option>
+          </md-select>
+        </td>
+        <td md-cell>
+          <md-button class="md-primary" ng-click="saveAccessCode(accessCode)">UPDATE</md-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
 <div class = "row">
-  <button class="btn btn-primary" ng-click="createAccessCodeView = true">Create Access Code</button>
+  <md-button class="md-primary" ng-click="data.createAccessCodeView = true">Create Access Code</md-button>
 </div>
-<div ng-if="createAccessCodeView" class = "row"  ng-init="newAccessCode = newAccessCodeModel()">
+<div ng-if="data.createAccessCodeView" class = "row"  ng-init="newAccessCode = newAccessCodeModel()">
   <formly-form  model="newAccessCode" fields="newAccessCodeField"
   form="accessCodeForm">
-    <button type="submit" ng-disabled="accessCodeForm.$invalid"
-      ng-click="createAccessCode(newAccessCode); createAccessCodeView = false">
+    <md-button class="md-warn" type="submit" ng-disabled="accessCodeForm.$invalid"
+      ng-click="createAccessCode(newAccessCode); data.createAccessCodeView = false">
       Submit
-    </button>
+    </md-button>
   </formly-form>
-</div>
-<div class= "row">
-  <div class="col-md-2">
-    <span>Id</span>
-  </div>
-  <div>
-    <span>Code</span>
-  </div>
-  <div>
-    <span>Domains</span>
-  </div>
-</div>
-<div ng-if="!accessCodes.length"> No Domains</div>
-<div ng-repeat="accessCode in accessCodes" class= "row">
-    <div class="col-md-2">
-      <span>{{accessCode.codeId}}</span>
-    </div>
-    <div class = "col-md-2">
-      <span editable-text="accessCode.code">{{accessCode.code}}</span>
-    </div>
-    <div class = "col-md-2">
-      <select id="domainsSelect" ng-model="accessCode.domains" multiple>
-        <option ng-repeat="domain in domains" value="{{domain.domainId}}">{{domain.name}}</option>
-      </select>
-    </div>
-    <div class = "col-md-2">
-      <button class="btn btn-primary" ng-click="saveAccessCode(accessCode)">
-        Update
-      </button>
-    </div>
-
-
-
 </div>
 </div>
 
