@@ -1,22 +1,24 @@
-<div class="container">
-      <div class="card card-container" style="max-width: 350px; width: 40%;margin: auto;
-              padding-top: 3%;">
-          <p>
-            UMAAS Login
-          </p>
-          <form class="form-signin">
-              <span id="reauth-email" class="reauth-email"></span>
-              <input ng-model="username" type="username" id="username" class="form-control" placeholder="Username" required autofocus>
-              <input ng-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-              <div id="remember" class="checkbox">
-                  <label>
-                      <input ng-model="rememberme" type="checkbox" value="remember-me"> Remember me</input>
-                  </label>
-              </div>
-              <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" ng-click="login(username,password, rememberme)">Sign in</button>
-          </form><!-- /form -->
-          <a href="#" class="forgot-password">
-              Forgot the password?
-          </a>
-      </div><!-- /card-container -->
-  </div><!-- /container -->
+<div layout="row" id="loginPage">
+  <md-card>
+    <div flex class="logo">
+      <img src="/assets/umaas.png" alt="UMAAS" class="logo"/>
+    </div>
+    <div flex layout="row">
+      <div flex="60" flex-offset="20">
+        <form layout="column">
+          <md-input-container>
+            <label>Username</label>
+            <input ng-model="username" type="username" id="username" required autofocus>
+          </md-input-container>
+          <md-input-container>
+            <label>Password</label>
+            <input ng-model="password" type="password" id="inputPassword" placeholder="Password" required>
+          </md-input-container>
+          <md-checkbox aria-label="Remember me?" ng-model="rememberme"> Remember me</md-checkbox>
+          <md-button class="md-warn md-raised" type="submit" ng-click="login(username,password, rememberme)">Sign in</md-button>
+        </form>
+      </div>
+    </div>
+
+  </md-card>
+</div>

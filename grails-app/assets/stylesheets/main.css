@@ -46,3 +46,23 @@ section[role=feature] .feature-title{
 section[role=feature] .feature-description{
 
 }
+
+#loginPage .logo{
+  text-align: center;
+}
+#loginPage img{
+  width: 100px;
+  height: 100px;
+  vertical-align: middle;
+}
+
+#loginPage md-card{
+  width: 30%;
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#loginPage .login-form{
+  padding: 5%, 20%;
+}
