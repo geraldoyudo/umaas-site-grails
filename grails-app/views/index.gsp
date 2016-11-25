@@ -24,13 +24,14 @@
 <body ng-app="umaas.manager.site" ng-controller="IndexController as indexCtrl" ng-cloak="">
     <div layout="row">
 
-      <div flex>
+      <div flex class="app-title">
         <img src="/assets/umaas.png" alt="Grails" class="logo" style="width:40px; height:40px"/>
         <md-button style="margin-top:auto" href="#">UMAAS</md-button>
       </div>
         <md-menu>
-          <md-button aria-label="Documentation Menu" class="md-primary" ng-click="$mdOpenMenu($event)">
-            <span md-menu-origin>Documentation</span>
+          <md-button aria-label="Documentation Menu" class="md-primary md-raised" ng-click="$mdOpenMenu($event)">
+            <span>Documentation</span>
+            <div md-menu-origin></div>
           </md-button>
           <md-menu-content width="6">
             <md-menu-item >
@@ -51,8 +52,9 @@
           </md-menu-content>
         </md-menu>
         <md-menu ng-if="indexCtrl.user">
-          <md-button aria-label="Accounts Menu" class="md-primary" ng-click="$mdOpenMenu($event)">
-            <span md-menu-origin>My Accounts</span>
+          <md-button aria-label="Accounts Menu" class="md-primary md-raised" ng-click="$mdOpenMenu($event)">
+            <span>My Accounts</span>
+            <div md-menu-origin></div>
           </md-button>
           <md-menu-content width="6">
             <md-menu-item >
@@ -85,35 +87,10 @@
       </div>
 
     </div>
-    <md-content class="md-padding" layout-fill>
-      <div ui-view ></div>
+    <div  layout-fill>
+        <div ui-view></div>
+    </div>
 
-    </md-content>
-    <footer md-colors="{background: 'primary'}">
-      <div layout="row" class="footer" flex>
-        <div layout="column" flex>
-          <span>UMAAS.IO</span>
-          <a href="#">Privacy</a>
-          <a href="#">Terms of Service</a>
-        </div>
-        <div layout="column" flex>
-          <span>COMPANY</span>
-          <a href="#">Product</a>
-          <a href="#">Team</a>
-          <a href="#">Partners</a>
-          <a href="#">Contact Us</a>
-        </div>
-        <div layout="column" flex>
-          <span>Platform</span>
-          <a href="#">Docs</a>
-          <a href="#">Blog</a>
-        </div>
-        <div layout="row" flex>
-          <a href="www.facebook.com">Facebook</a>
-          <a href="www.twitter.com">Twiter</a>
-        </div>
-      </div>
-    </footer>
     <asset:javascript src="/umaas/manager/site/umaas.manager.site.js" />
 </body>
 </html>

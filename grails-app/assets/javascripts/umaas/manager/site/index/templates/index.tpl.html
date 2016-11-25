@@ -1,27 +1,184 @@
-<div class="svg" role="presentation">
-    <div class="grails-logo-container">
-        <image src="/assets/grails-cupsonly-logo-white.svg" class="grails-logo"/>
-    </div>
-</div>
+<div>
+<section id="header">
+  <div>
+    <h3 class="md-display-3">
+      Take Back Control of Your Users
+    </h3>
+    <p class="md-headline">
+      With this simple tool, you can have your users
+       managed in a central location. Never
+       have to worry about mundane things like multiple
+        infrastructure for multiple applications,
+        registration and authentication again!!
+    </p>
+    <p>
+        <md-button class="md-raised md-warn md-large">LEARN MORE</md-button>
+    </p>
+  </div>
+</section>
 
-<div id="content" role="main">
-    <section class="row colset-2-its">
-        <h1>Welcome to UMAAS</h1>
-
-        <p>
-            Congratulations, you have successfully started your first Grails application! At the moment
-            this is the default page, feel free to modify it to either redirect to a controller or display
-            whatever content you may choose. Below is a list of controllers that are currently deployed in
-            this application, click on each to execute its default action:
+<section role="feature">
+  <div layout="row" layout-padding>
+    <div class="feature-section flex">
+      <div>
+        <h3 class="feature-title md-display-1">
+          User Profile Managment
+        </h3>
+        <p class="feature-description md-subheading">
+          Store common user details and other
+           custom fields pertaining to your user.
+            The fields could even be files!!
         </p>
-        <div id="controllers" role="navigation">
-            <h2>Available Controllers:</h2>
-            <ul ng-cloak>
-                <li ng-repeat="c in indexCtrl.applicationData.controllers | orderBy:'name'" class="controller">
-                    <a ng-if="!indexCtrl.stateExists(c.logicalPropertyName+'.list')" ng-href="{{indexCtrl.contextPath}}/{{c.logicalPropertyName}}">{{c.name}}</a>
-                    <a ng-if="indexCtrl.stateExists(c.logicalPropertyName+'.list')" ui-sref="{{c.logicalPropertyName}}.list">{{c.name}}</a>
-                </li>
-            </ul>
-        </div>
-    </section>
+      </div>
+    </div>
+    <div class="feature-section flex">
+      IMAGE GOES HERE
+    </div>
+  </div>
+</section>
+
+<section role="feature">
+  <div layout="row" layout-padding>
+    <div class="feature-section flex">
+      IMAGE GOES HERE
+    </div>
+    <div class="feature-section flex">
+      <div>
+        <h3 class="feature-title md-display-1">
+          Group and Role Managment
+        </h3>
+        <p class="feature-description md-subheading">
+          Organize your users into groups and assign them roles.
+          The roles are returned on every authentication.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section role="feature">
+  <div layout="row" layout-padding>
+    <div class="feature-section flex">
+      <div>
+        <h3 class="feature-title md-display-1">
+          Authentication
+        </h3>
+        <p class="feature-description md-subheading">
+          Have a single api for authenticating users in
+          your different applications. Whether its on the
+          same user set or a different one.
+        </p>
+      </div>
+    </div>
+    <div class="feature-section flex">
+      IMAGE GOES HERE
+    </div>
+  </div>
+</section>
+
+<section role="feature">
+  <div layout="row" layout-padding>
+    <div class="feature-section flex">
+      IMAGE GOES HERE
+    </div>
+    <div class="feature-section flex">
+      <div>
+        <h3 class="feature-title md-display-1">
+          Dynamic Registration
+        </h3>
+        <p class="feature-description md-subheading">
+          Never have to code a registration form in your life!
+          Have a dynamic registration flow that accounts for
+          all your custom fields regardless of type.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section role="feature">
+  <div layout="row" layout-padding>
+    <div class="feature-section flex">
+      <div>
+        <h3 class="feature-title md-display-1">
+          Ui Administration
+        </h3>
+        <p class="feature-description md-subheading">
+          Manage users, groups, roles and domain properties all in
+          a sleek new user interface and rest api.
+        </p>
+      </div>
+    </div>
+    <div class="feature-section flex">
+      IMAGE GOES HERE
+    </div>
+  </div>
+</section>
+
+<section role="feature">
+  <div layout="row" layout-padding>
+    <div class="feature-section flex">
+      IMAGE GOES HERE
+    </div>
+    <div class="feature-section flex">
+      <div>
+        <h3 class="feature-title md-display-1">
+          ... And More
+        </h3>
+        <p class="feature-description md-subheading">
+          here is our road map for this project:
+          <ul>
+            <li>Implementation of file and data storage for domains</li>
+            <li>Implementation of client api in many programming environments: java, javascript, ruby, php</li>
+            <li>User event recording and analysis</li>
+            <li>Login and session management</li>
+            <li>Single sign on and oauth provider</li>
+            <li>Hosted and customized registration screens</li>
+            <li>Import and export of user data</li>
+            <li>Hooks plugin to perform operation on user events</li>
+            <li>Integration to different services</li>
+            <li>Customer Insights/Analysis</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section role="feature">
+  <div layout="row" layout-padding>
+    <div class="feature-section flex">
+      <div>
+        <h3 class="feature-title md-display-1">
+          ... And lots More
+        </h3>
+        <p class="feature-description md-subheading">
+          What features do you need to have integrated?
+        </p>
+        <p class="feature-description md-subheading">
+          Do <a href="#">contact us</a> for any suggestions!
+        </p>
+      </div>
+    </div>
+    <div class="feature-section flex">
+      IMAGE GOES HERE
+    </div>
+  </div>
+</section>
+
+<section  ng-if="!indexCtrl.user" role="feature">
+  <div class="feature-section">
+    <div>
+      <p class="feature-description md-subheading">
+        Why not start and have your users
+        managed free of charge?
+      </p>
+      <p>
+          <md-button class="md-raised md-warn md-large"
+          ng-href="{{indexCtrl.applicationData.umaasRegistration + '?domain=' + indexCtrl.applicationData.domain}}">Sign Up</md-button>
+      </p>
+    </div>
+  </div>
+</section>
+
 </div>

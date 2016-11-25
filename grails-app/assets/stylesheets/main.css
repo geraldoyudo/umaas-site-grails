@@ -1,3 +1,48 @@
+.app-title *{
+  vertical-align: middle;
+}
 .md-list-item{
   border-bottom: 3px;
+}
+
+#header{
+  text-align: center
+}
+#header div{
+  width: 75%;
+  margin: auto;
+}
+.md-large{
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  padding: 20px;
+}
+
+section{
+  border-bottom: solid 3px;
+  margin-bottom: 10px;
+}
+
+section[role=feature]{
+
+}
+section[role=feature] .feature-section div{
+  text-align: center;
+  margin: 5% 10%;
+}
+section[role=feature] .feature-section img{
+  text-align: center;
+  margin: 5% 10%;
+}
+section[role=feature] .feature-section{
+  text-align: center;
+}
+
+section[role=feature] .feature-title{
+
+}
+
+section[role=feature] .feature-description{
+
 }
