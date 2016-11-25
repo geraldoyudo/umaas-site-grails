@@ -72,4 +72,12 @@ function AccountsController(Domain, AccessCode,
   $scope.newDomainModel = function(){
     return {code: "", name: "", userId: $scope.user.id};
   }
+  $scope.getDomainName = function(domainId){
+    for(var i=0; i<$scope.domains.length; ++i){
+      if($scope.domains[i].domainId === domainId){
+        return $scope.domains[i].name;
+      }
+    }
+    throw "No domain found with id";
+  }
 }

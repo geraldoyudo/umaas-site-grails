@@ -97,7 +97,7 @@
           Code:  {{accessCode.code}}</div>
         </div>
         <div layout="row" layout-wrap layout-padding="3%">
-          <span ng-repeat="domain in accessCode.domains"> domain.name</span>
+          <span ng-repeat="domain in accessCode.domains"> {{getDomainName(domain)}}</span>
         </div>
       </div>
     </md-list-item>
