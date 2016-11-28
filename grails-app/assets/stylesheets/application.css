@@ -9,7 +9,6 @@
 *
 *= require /angular-material/angular-material
 *= require /angular-material-data-table/dist/md-data-table
-*= require /angular-xeditable/dist/css/xeditable
 *= require main
 *= require_self
 */

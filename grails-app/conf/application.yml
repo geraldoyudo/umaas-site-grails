@@ -96,8 +96,19 @@ environments:
             dbCreate: update
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     production:
+        umaas:
+            registration: http://localhost:8040/umaas-registration/app/register
+            admin: http://localhost:8040/umaas-admin/app/admin
+            core: http://localhost:8040/umaas-core
+            domain:
+              name: umaas-manager
+              id: 1111
+            access:
+              id: '0000'
+              code: '0000'
+            docs: http://localhost:8082/
         dataSource:
-            dbCreate: none
+            dbCreate: update
             url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
             properties:
                 jmxEnabled: true

@@ -1,5 +1,5 @@
 //= wrapped
-//= require /jquery/jquery
+//= require /jquery/dist/jquery
 //= require /angular/angular
 //= require /angular-resource/angular-resource
 //= require /angular-ui-router/release/angular-ui-router
@@ -11,7 +11,6 @@
 //= require /angular-formly/dist/formly
 //= require /angular-formly-material/dist/formly-material
 //= require /angular-material-data-table/dist/md-data-table
-//= require /angular-xeditable/dist/js/xeditable
 //= require /umaas/manager/site/core/umaas.manager.site.core
 //= require /umaas/manager/site/index/umaas.manager.site.index
 //= require /umaas/manager/site/accounts/umaas.manager.site.accounts

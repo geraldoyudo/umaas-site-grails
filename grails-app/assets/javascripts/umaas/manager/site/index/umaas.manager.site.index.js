@@ -8,7 +8,6 @@
 angular.module("umaas.manager.site.index", [
     "umaas.manager.site.core",
     "ui.router",
-    "xeditable",
     "formly",
     "ngMaterial",
     "formlyMaterial",
