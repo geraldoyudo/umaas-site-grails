@@ -8,6 +8,7 @@ model {
 	String umaasAdministration
 	String domain
 	String docs
+	String blog
 }
 
 json {
@@ -15,4 +16,5 @@ json {
 	umaasAdministration umaasAdministration
 	domain domain
 	docs docs
+	blog blog
 }

@@ -17,10 +17,13 @@ class ApplicationController implements PluginManagerAware {
     String domain;
     @Value('${umaas.docs}')
     String docs;
+    @Value('${umaas.blog}')
+    String blog;
     def index() {
           [umaasRegistration: umaasRegistration,
           umaasAdministration: umaasAdministration,
           domain: domain,
-          docs: docs]
+          docs: docs,
+          blog: blog]
     }
 }

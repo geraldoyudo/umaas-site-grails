@@ -35,17 +35,17 @@
           </md-button>
           <md-menu-content width="6">
             <md-menu-item >
-              <md-button ng-href="{{indexCtrl.applicationData.docs + 'getting_started/index.html'}}">
+              <md-button ui-sref="gettingStarted">
                 Getting Started
               </md-button>
             </md-menu-item>
             <md-menu-item >
-              <md-button ng-href="{{indexCtrl.applicationData.docs + 'tutorials/index.html'}}">
+              <md-button ui-sref="tutorials">
                 Tutorials
               </md-button>
             </md-menu-item>
             <md-menu-item >
-              <md-button ng-href="{{indexCtrl.applicationData.docs + 'reference/index.html'}}">
+              <md-button ui-sref="references">
                 Reference
               </md-button>
             </md-menu-item>
@@ -88,7 +88,7 @@
 
     </div>
     <div  layout-fill>
-        <div ui-view></div>
+        <div ui-view layout-fill></div>
     </div>
 
     <asset:javascript src="/umaas/manager/site/umaas.manager.site.js" />

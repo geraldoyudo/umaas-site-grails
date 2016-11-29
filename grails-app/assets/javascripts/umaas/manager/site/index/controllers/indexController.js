@@ -5,7 +5,7 @@ angular
     .controller("IndexController", IndexController);
 
 function IndexController(applicationDataFactory, contextPath,
-   $state, $rootScope, $http) {
+   $state, $rootScope, $http, $sce) {
     var vm = this;
     var getUser = function(){
       $http.get('profile').then(function(resp){
@@ -31,5 +31,9 @@ function IndexController(applicationDataFactory, contextPath,
     vm.stateExists = function(name) {
         return $state.get(name) != null;
     };
+
+    vm.trustSrc = function(src) {
+       return $sce.trustAsResourceUrl(src);
+     }
 
 }
