@@ -4,21 +4,28 @@ angular
     .module("umaas.manager.site.index")
     .controller("DocumentationController", DocumentationController);
 
-function DocumentationController( contextPath, $http, $scope) {
+function DocumentationController( $http, $scope) {
     var vm = $scope;
+    var baseUrl = "/blog/";
+    $http.get( baseUrl + "tutorials").then(function(resp){
+      console.log( "Gotten tutorials");
+      console.log(resp);
+      vm.tutorials = resp.data;
+    });
+    $http.get( baseUrl + "references").then(function(resp){
+      console.log(resp);
+      vm.references = resp.data;
+    });
+    $http.get( baseUrl + "guides").then(function(resp){
+      console.log(resp);
+      vm.guides = resp.data;
+    });
 
-    vm.tutorials = [
-      {title: "Sample tutorial", url: "http://google.com",
-    logo: "http://logo.com"}
-    ]
+    vm.fullUrl = function(url){
+      if(!url.startsWith("http")){
+        url = vm.indexCtrl.applicationData.blog + "/" +  url;
+      }
+      return url;
+    }
 
-    vm.references = [
-      {title: "Sample Reference", url: "http://google.com",
-    logo: "http://logo.com", platform: "java"}
-    ]
-
-    vm.guides = [
-      {title: "title", url: "http://google.com",
-    logo: "http://logo.com", platform: "spring boot"}
-    ]
 }

@@ -25,6 +25,7 @@ class UrlMappings {
         get "/documentation/gettingStarted" (controller: "documentation", action: "gettingStarted")
         get "/documentation/tutorials" (controller: "documentation", action: "tutorials")
         get "/documentation/reference" (controller: "documentation", action: "reference")
+        get "/blog/$collection" (controller: "blog", action: "index")
 
     }
 }

@@ -2,10 +2,10 @@
   <p>
     What platform are you using? Choose a reference from the list below
   </p>
-  <div layout="row">
-    <md-button ng-repeat="ref in references" ng-href="{{ref.url}}">
-      <img ng-src="{{ref.logo}}"></img>
-      <span>{{ref.platform}}</span>
+  <div>
+    <md-button style="width: 30%; height: 20%" ng-repeat="ref in references" ng-href="{{indexCtrl.applicationData.blog + ref.url}}">
+      <img ng-src="{{fullUrl(ref.logo)}}"></img>
+      <p>{{ref.platform}}</p>
     </md-button>
   </div>
 </div>

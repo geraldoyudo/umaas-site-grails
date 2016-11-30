@@ -3,6 +3,6 @@
     Want to learn? Check out the list of tutorials below:
   </p>
   <div ng-repeat="ref in tutorials" layout="row">
-    <a ng-href="{{ref.url}}">{{ref.title}}</a>
+    <a ng-href="{{indexCtrl.applicationData.blog + ref.url}}">{{ref.title}}</a>
   </div>
 </div>
