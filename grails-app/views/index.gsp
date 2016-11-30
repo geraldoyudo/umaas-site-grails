@@ -35,17 +35,17 @@
           </md-button>
           <md-menu-content width="6">
             <md-menu-item >
-              <md-button ui-sref="gettingStarted">
+              <md-button ui-sref="documentation.gettingStarted">
                 Getting Started
               </md-button>
             </md-menu-item>
             <md-menu-item >
-              <md-button ui-sref="tutorials">
+              <md-button ui-sref="documentation.tutorials">
                 Tutorials
               </md-button>
             </md-menu-item>
             <md-menu-item >
-              <md-button ui-sref="references">
+              <md-button ui-sref="documentation.references">
                 Reference
               </md-button>
             </md-menu-item>

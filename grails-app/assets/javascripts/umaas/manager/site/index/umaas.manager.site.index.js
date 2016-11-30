@@ -30,15 +30,21 @@ function config($stateProvider, $urlRouterProvider) {
             url: "/community",
             templateUrl: "/umaas/manager/site/index/community.html"
         })
-        .state('gettingStarted', {
+        .state('documentation', {
+            url: "/documentation",
+            abstract: true,
+            controller: 'DocumentationController',
+            template: '<div layout-fill ui-view></div>'
+        })
+        .state('documentation.gettingStarted', {
             url: "/gettingStarted",
             templateUrl: "/umaas/manager/site/index/gettingStarted.html"
         })
-        .state('references', {
+        .state('documentation.references', {
             url: "/references",
             templateUrl: "/umaas/manager/site/index/references.html"
         })
-        .state('tutorials', {
+        .state('documentation.tutorials', {
             url: "/tutorials",
             templateUrl: "/umaas/manager/site/index/tutorials.html"
         })

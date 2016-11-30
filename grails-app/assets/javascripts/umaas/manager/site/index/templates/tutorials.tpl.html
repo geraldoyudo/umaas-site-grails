@@ -1,3 +1,8 @@
-<div layout="row" layout-fill>
-  <iframe flex  flex-grow scrolling="no" ng-src="{{indexCtrl.trustSrc(indexCtrl.applicationData.docs + 'tutorials/index.html')}}"></iframe>
+<div layout-fill>
+  <p>
+    Want to learn? Check out the list of tutorials below:
+  </p>
+  <div ng-repeat="ref in tutorials" layout="row">
+    <a ng-href="{{ref.url}}">{{ref.title}}</a>
+  </div>
 </div>

@@ -1,3 +1,11 @@
-<div layout="row" layout-fill>
-  <iframe flex  flex-grow ng-src="{{indexCtrl.trustSrc(indexCtrl.applicationData.docs + 'reference/index.html')}}"></iframe>
+<div layout-fill>
+  <p>
+    What platform are you using? Choose a reference from the list below
+  </p>
+  <div layout="row">
+    <md-button ng-repeat="ref in references" ng-href="{{ref.url}}">
+      <img ng-src="{{ref.logo}}"></img>
+      <span>{{ref.platform}}</span>
+    </md-button>
+  </div>
 </div>
