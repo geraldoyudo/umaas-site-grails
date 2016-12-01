@@ -76,7 +76,7 @@
         </md-menu>
       <div>
         <md-nav-bar  md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-             <md-nav-item md-nav-sref="community" name="community">Community</md-nav-item>
+             <md-nav-item md-nav-href="/#!/community" name="community">Community</md-nav-item>
              <md-nav-item md-nav-sref="about" name="about">About</md-nav-item>
              <md-nav-item ng-if="!indexCtrl.user"  md-nav-sref="login" name="login">Log In</md-nav-item>
              <md-nav-item ng-if="!indexCtrl.user"

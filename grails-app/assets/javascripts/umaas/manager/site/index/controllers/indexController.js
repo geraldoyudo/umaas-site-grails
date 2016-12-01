@@ -36,4 +36,15 @@ function IndexController(applicationDataFactory, contextPath,
        return $sce.trustAsResourceUrl(src);
      }
 
+    vm.staffs = [
+      {photo: '/assets/umaas.png', name: 'Oyudo Gerald', designation: 'Software Developer'},
+      {photo: '/assets/umaas.png', name: 'Oyudo Gerald', designation: 'Software Developer'},
+      {photo: '/assets/umaas.png', name: 'Oyudo Gerald', designation: 'Software Developer'},
+      {photo: '/assets/umaas.png', name: 'Oyudo Gerald', designation: 'Software Developer'},
+      {photo: '/assets/umaas.png', name: 'Oyudo Gerald', designation: 'Software Developer'},
+      {photo: '/assets/umaas.png', name: 'Oyudo Gerald', designation: 'Software Developer'},
+      {photo: '/assets/umaas.png', name: 'Oyudo Gerald', designation: 'Software Developer'},
+      {photo: '/assets/umaas.png', name: 'Oyudo Gerald', designation: 'Software Developer'},
+      {photo: '/assets/umaas.png', name: 'Oyudo Gerald', designation: 'Software Developer'}
+    ]
 }

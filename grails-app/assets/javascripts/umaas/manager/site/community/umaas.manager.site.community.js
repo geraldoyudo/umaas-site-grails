@@ -15,6 +15,7 @@ function config($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('community', {
             url: "/community",
+            abstract: "true",
             templateUrl: "/umaas/manager/site/community/index.html",
             controller: "CommunityController as commCtrl"
         })
@@ -30,4 +31,5 @@ function config($stateProvider, $urlRouterProvider) {
             url: "/subscribe",
             templateUrl: "/umaas/manager/site/community/subscribe.html"
         });
+    $urlRouterProvider.when("/community", "/community/blog");
 }
