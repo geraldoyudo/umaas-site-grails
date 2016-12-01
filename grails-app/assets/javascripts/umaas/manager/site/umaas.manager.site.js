@@ -14,9 +14,11 @@
 //= require /umaas/manager/site/core/umaas.manager.site.core
 //= require /umaas/manager/site/index/umaas.manager.site.index
 //= require /umaas/manager/site/accounts/umaas.manager.site.accounts
+//= require /umaas/manager/site/community/umaas.manager.site.community
 
 angular.module("umaas.manager.site", [
     "umaas.manager.site.core",
     "umaas.manager.site.index",
-    "umaas.manager.site.accounts"
+    "umaas.manager.site.accounts",
+    "umaas.manager.site.community"
 ]);

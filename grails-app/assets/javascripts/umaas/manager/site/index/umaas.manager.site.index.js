@@ -26,10 +26,6 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: "/umaas/manager/site/index/login.html",
             controller: 'LoginController'
         })
-        .state('community', {
-            url: "/community",
-            templateUrl: "/umaas/manager/site/index/community.html"
-        })
         .state('documentation', {
             url: "/documentation",
             abstract: true,

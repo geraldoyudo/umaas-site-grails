@@ -66,3 +66,7 @@ section[role=feature] .feature-description{
 #loginPage .login-form{
   padding: 5%, 20%;
 }
+
+.align-center{
+  text-align: center;
+}
