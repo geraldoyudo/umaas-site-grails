@@ -1,3 +1,25 @@
-<div layout="row" >
-  Subscribe
+<div layout="column" >
+  <div md-colors="{background: 'accent'}" layout-padding class="align-center">
+   <h1 class="md-display-3">Subscribe</h1>
+  </div>
+  <p class="align-center">
+    Keep in touch with us to know what is going on in development!
+  </p>
+  <br/>
+
+  <div class="column">
+    <div>
+      <p>Subscribe to our RSS feeds <a ng-href="{{indexCtrl.applicationData.blog + '/feed.xml'}}">here</a></p
+    </div>
+  </div>
+
+  <div >
+    <p>We are on the following social platforms</p>
+    <div layout="row">
+      <a flex="20" ng-repeat="social in socials" ng-href="{{social.href}}" class="social align-center">
+        <img ng-src="{{social.url}}"></img>
+        <p>{{social.name}}</p>
+      </a>
+    </div>
+  </div>
 </div>

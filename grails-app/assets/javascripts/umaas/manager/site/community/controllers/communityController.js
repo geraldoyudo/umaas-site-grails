@@ -21,10 +21,22 @@ function CommunityController( $http, $scope) {
         title: "Subscribe"
       }
     ]
+    vm.socials = [
+      {url:"/assets/logos/facebook.jpg", name:"facebook", href:"http://facebook.com/umaas" },
+      {url:"/assets/logos/instagram.jpg", name:"instagram", href:"http://instagram.com/umaas" },
+      {url:"/assets/logos/twitter.png", name:"twitter", href:"http://twitter.com/umaas" }
+
+    ]
     var baseUrl = "/blog/";
     $http.get( baseUrl + "posts").then(function(resp){
       console.log( "Gotten posts");
       console.log(resp);
       vm.blogs = resp.data;
+    });
+
+    $http.get( baseUrl + "events").then(function(resp){
+      console.log( "Gotten events");
+      console.log(resp);
+      vm.events = resp.data;
     });
 }
