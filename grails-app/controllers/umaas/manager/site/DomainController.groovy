@@ -8,6 +8,7 @@ class DomainController {
 
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    def umaasLoader;
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -77,5 +78,9 @@ class DomainController {
           }.list(params), model:[domainCount: Domain.where{
             userId == uid
             }.count()]
+    }
+
+    def getDomainLimit(String domain) {
+        respond umaasLoader.loadLimit(domain);
     }
 }

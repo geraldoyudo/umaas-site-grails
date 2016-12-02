@@ -28,6 +28,8 @@ public class UmaasLoader {
 	private String accessCode;
 	@Value("${umaas.domain.id}")
 	private String domainId;
+	@Value("${umaas.service.file_limit}")
+	private String fileLimitService;
 	@Autowired
 	private RestTemplate restTemplate;
 
@@ -46,6 +48,20 @@ public class UmaasLoader {
 		Collection<String> domains = getDomainList(id);
 		code.put("domains", domains);
 		return code;
+	}
+	
+	public Map<String,Object> loadLimit(String domainId){
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(umaasCoreUrl +
+				"/system/")
+				.path(fileLimitService)
+				.path("/execute");
+		Map<String,Object> executionParams = new HashMap<>();
+		executionParams.put("method", "getDomainLimit");
+		Map<String,Object> params = new HashMap<>();
+		params.put("domain", domainId);
+		executionParams.put("input", params);
+		Map<String,Object> limitMap =  create(builder.build().toUriString(),executionParams);
+		return (Map<String,Object>)limitMap.get("value");
 	}
 
 	public Map<String,Object> saveAccessCode(String id, final Map<String,Object> code){
@@ -274,4 +290,7 @@ public class UmaasLoader {
 		this.restTemplate = restTemplate;
 	}
 
+	public void setFileLimitService(String fileLimitService){
+		this.fileLimitService = fileLimitService;
+	}
 }

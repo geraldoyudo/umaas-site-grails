@@ -31,7 +31,7 @@
     </tbody>
   </table>
 </md-table-container>
-<div class = "row">
+<div class = "row" ng-if="domains.length < user.customFields.domainSize">
   <md-button class="md-primary" ng-click="data.createDomainView = true">Create Domain</md-button>
 </div>
 <md-card ng-show="data.createDomainView" class = "row" ng-init="newDomain =newDomainModel()">

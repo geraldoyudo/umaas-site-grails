@@ -10,12 +10,16 @@ function AccountsController(Domain, AccessCode,
   var initialize = function(){
     $scope.domains = [];
     $scope.accessCodes =[];
+    $scope.data = {};
+    $scope.data.createDomainView = false;
+    $scope.data.createAccessCodeView = false;
     Domain.listByUser({uid: $scope.user.id}).$promise.then(function(domains){
         console.log(domains);
         if(domains.length){
           $scope.domains = domains;
         }
           console.log($scope.domains);
+          $scope.refreshLimits();
     }, function(error){
       console.log(error);
     });
@@ -79,5 +83,15 @@ function AccountsController(Domain, AccessCode,
       }
     }
     throw "No domain found with id";
+  }
+
+  $scope.refreshLimits = function(){
+    console.log("Refreshing limits")
+    console.log($scope.domains);
+    $scope.domains.forEach(function(domain){
+        Domain.limit({domain: domain.domainId}).$promise.then(function(limit){
+          domain.limit = limit;
+        })
+    })
   }
 }

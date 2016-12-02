@@ -1,7 +1,9 @@
 package com.gerald.isslng.umaas.manager.security;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +23,8 @@ public class UmaasUser implements UserDetails {
 	private String username;
 	private List<String> groups;
 	private List<String> roles;
-	
+	@JsonProperty("properties")
+	private Map<String,Object> customFields = new HashMap<>();
 	public String getId() {
 		return id;
 	}
@@ -78,4 +81,11 @@ public class UmaasUser implements UserDetails {
 		return true;
 	}
 	
+	public Map<String,Object> getCustomFields(){
+		return customFields;
+	}
+	
+	public void setCustomFields(Map<String,Object> customFields){
+		this.customFields  = customFields;
+	}
 }

@@ -20,6 +20,7 @@ public class UmaasLoaderTest {
 		loader.setUmaasCoreUrl("http://localhost:8040/umaas-core");
 		GeneralConfiguration config = new  GeneralConfiguration();
 		loader.setRestTemplate(config.restTemplate());
+		loader.setFileLimitService("com.gerald.umaas.file_limit.service");
 	}
 	
 	@Test
@@ -45,6 +46,13 @@ public class UmaasLoaderTest {
 		Map<String,Object> domain = loader.loadDomain("1111");
 		assertNotNull(domain);
 		System.out.println(domain);
+	}
+	
+	@Test
+	public void testLoadLimit() {
+		Map<String,Object> limit = loader.loadLimit("1111");
+		assertNotNull(limit);
+		System.out.println(limit);
 	}
 	
 	@Test

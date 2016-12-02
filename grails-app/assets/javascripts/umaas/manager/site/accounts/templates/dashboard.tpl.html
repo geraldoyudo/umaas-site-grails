@@ -13,7 +13,7 @@
   </md-card-header>
   <md-card-content>
     <p>
-     3/4
+    {{domains.length || 0}}/{{user.customFields.domainSize}}
     </p>
   </md-card-content>
 </md-card>
@@ -25,19 +25,7 @@
 </md-card-header>
 <md-card-content>
   <p>
-   3/4
-  </p>
-</md-card-content>
-</md-card>
-<md-card flex>
-<md-card-header>
-  <md-card-header-text>
-    <span class="md-title">Total Memory Size</span>
-  </md-card-header-text>
-</md-card-header>
-<md-card-content>
-  <p>
-   3408MB/1GB
+   {{accessCodes.length || 0}}/{{user.customFields.accessCodeSize}}
   </p>
 </md-card-content>
 </md-card>
@@ -53,57 +41,25 @@
     </md-toolbar>
   </md-card-header>
   <md-card-content>
-    <div ng-if="!domains.length" md-colors="{background: 'primary'}"> No Domains</div>
-    <md-list>
-      <md-list-item class="md-3-line" ng-repeat="domain in domains">
-        <div class="md-list-item-text">
-          <h3>{{domain.name}}</h3>
-          <div layout="row">
-            <div flex>ID:  {{domain.domainId}}</div>
-            <div flex>Code:  {{domain.code}}</div>
-          </div>
-          <div layout="row">
-            <div flex>
-              <md-button ng-href="{{indexCtrl.applicationData.umaasAdministration + '?domain='+ domain.name}}">
-                Manage
-              </md-button>
-            </div>
-            <div flex>
-              <md-button ng-href="{{indexCtrl.applicationData.umaasRegistration + '?domain='+ domain.name}}">
-                Register User
-              </md-button>
-            </div>
-          </div>
-        </div>
-      </md-list-item>
-    </md-list>
+    <div ng-if="!domains.length"> No Domains</div>
+    <!-- exact table from live demo -->
+    <md-table-container ng-if="domains.length">
+      <table md-table>
+        <thead md-head>
+          <tr md-row>
+            <th md-column><span>Domain Name</span></th>
+            <th md-column><span>File Memory Usage</span></th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select-id="name" md-auto-select ng-repeat="domain in domains">
+            <td md-cell>{{domain.name}}</td>
+            <td md-cell>{{domain.limit.size | bytes}} / {{domain.limit.limit | bytes}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
   </md-card-content>
-</md-card>
-<md-card flex>
-<md-card-header>
-  <md-toolbar class="md-hue-2">
-        <div class="md-toolbar-tools">
-          My Access Codes
-        </div>
-  </md-toolbar>
-</md-card-header>
-<md-card-content>
-  <div ng-if="!accessCodes.length" md-colors="{background: 'primary'}"> No Access Codes</div>
-  <md-list>
-    <md-list-item class="md-3-line" ng-repeat="accessCode in accessCodes">
-      <div class="md-list-item-text">
-        <h3>{{accessCode.codeId}}</h3>
-        <div layout="row">
-          Code:  {{accessCode.code}}</div>
-        </div>
-        <div layout="row" layout-wrap layout-padding="3%">
-          <span ng-repeat="domain in accessCode.domains"> {{getDomainName(domain)}}</span>
-        </div>
-      </div>
-    </md-list-item>
-  </md-list>
-
-</md-card-content>
 </md-card>
 
 </div>

@@ -27,7 +27,7 @@
     </tbody>
   </table>
 </md-table-container>
-<div class = "row">
+<div class = "row" ng-if="accessCodes.length < user.customFields.accessCodeSize">
   <md-button class="md-primary" ng-click="data.createAccessCodeView = true">Create Access Code</md-button>
 </div>
 <div ng-if="data.createAccessCodeView" class = "row"  ng-init="newAccessCode = newAccessCodeModel()">
