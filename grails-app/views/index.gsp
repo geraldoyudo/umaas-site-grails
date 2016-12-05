@@ -93,9 +93,9 @@
       </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" md-colors="{background: 'primary'}" layout="row">
            <p>Copyright (c) 2008</p>
-       </div>
+    </div>
 
     <asset:javascript src="/umaas/manager/site/umaas.manager.site.js" />
 </body>

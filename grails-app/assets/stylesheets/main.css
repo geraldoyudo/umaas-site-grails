@@ -34,13 +34,13 @@
 }
 
 section{
-  border-bottom: solid 1px;
-  margin-bottom: 10px;
-  border-color: rgba(0, 0, 0, 0.12);
+
 }
 
 section[role=feature]{
-
+  border-top: solid 1px;
+  margin-top: 10px;
+  border-color: rgba(0, 0, 0, 0.12);
 }
 section[role=feature] .feature-section div{
   text-align: center;
