@@ -24,10 +24,9 @@
 <body ng-app="umaas.manager.site" ng-controller="IndexController as indexCtrl" ng-cloak="">
     <div layout="row">
 
-      <div flex class="app-title">
-        <img src="/assets/umaas.png" alt="Grails" class="logo" style="width:40px; height:40px"/>
-        <md-button style="margin-top:auto" href="#">UMAAS</md-button>
-      </div>
+      <a flex class="app-title" href="#">
+        <img src="/assets/umaas.png" alt="UMAAS" class="logo" style="width:40px; height:40px"/>
+      </a>
         <md-menu>
           <md-button aria-label="Documentation Menu" class="md-primary md-raised" ng-click="$mdOpenMenu($event)">
             <span>Documentation</span>
@@ -87,9 +86,16 @@
       </div>
 
     </div>
-    <div  layout-fill>
-        <div ui-view layout-fill></div>
+    <div class="wrapper">
+      <div  layout-fill>
+          <div ui-view layout-fill></div>
+          <div class="push"></div>
+      </div>
     </div>
+
+    <div class="footer">
+           <p>Copyright (c) 2008</p>
+       </div>
 
     <asset:javascript src="/umaas/manager/site/umaas.manager.site.js" />
 </body>

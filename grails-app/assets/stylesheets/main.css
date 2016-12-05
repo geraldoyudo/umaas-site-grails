@@ -1,5 +1,19 @@
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+.footer, .push {
+	height: 4em;
+}
+
 .app-title *{
   vertical-align: middle;
+}
+.app-title {
+  padding-top: 10px;
+  padding-left: 10px;
 }
 .md-list-item{
   border-bottom: 3px;
@@ -20,8 +34,9 @@
 }
 
 section{
-  border-bottom: solid 3px;
+  border-bottom: solid 1px;
   margin-bottom: 10px;
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 section[role=feature]{
@@ -34,6 +49,8 @@ section[role=feature] .feature-section div{
 section[role=feature] .feature-section img{
   text-align: center;
   margin: 5% 10%;
+  height: 80%;
+  width: 40%;
 }
 section[role=feature] .feature-section{
   text-align: center;
@@ -86,4 +103,8 @@ section[role=feature] .feature-description{
 
 .staff md-grid-tile-footer{
   margin-top: 10px;
+}
+
+#header p{
+  margin-top: 12%;
 }
