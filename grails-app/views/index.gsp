@@ -12,8 +12,8 @@
         }
     </style>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <asset:stylesheet src="application.css"/>
-
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 
     <script type="text/javascript">

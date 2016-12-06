@@ -1,11 +1,22 @@
-<div layout-fill>
-  <p>
+<div layout-fill id="gettingStarted" class="align-center">
+  <h3 class="md-display-3">
     Getting started with which platform?
-  </p>
-  <div>
-    <md-button style="width: 30%; height: 20%" ng-repeat="ref in guides" ng-href="{{indexCtrl.applicationData.blog + ref.url}}">
+  </h3>
+  <md-grid-list
+      md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+      md-row-height-gt-md="1:1" md-row-height="4:3"
+      md-gutter="8px" md-gutter-gt-sm="4px" >
+
+  <md-grid-tile ng-repeat="ref in guides"
+                md-rowspan="1"
+                md-colspan="2"
+                md-colspan-sm="1"
+                md-colspan-xs="2" class="staff" >
+    <md-button ng-href="{{indexCtrl.applicationData.blog + ref.url}}">
       <img ng-src="{{fullUrl(ref.logo)}}"></img>
       <p>{{ref.platform}}</p>
     </md-button>
-  </div>
+  </md-grid-tile>
+</md-grid-list>
+
 </div>
