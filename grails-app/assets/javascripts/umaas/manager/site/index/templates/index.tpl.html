@@ -1,5 +1,4 @@
-<div>
-<section id="header">
+<section id="header" md-colors="{background: 'primary'}" >
   <div>
     <h3 class="md-display-3">
       Take Back Control of Your Users
@@ -12,12 +11,13 @@
         registration and authentication again!!
     </p>
     <p>
-        <md-button class="md-raised md-warn md-large" href="#begin">LEARN MORE</md-button>
+        <md-button class="md-raised md-accent md-large"
+        ng-click="indexCtrl.gotoAnchor(1)" >LEARN MORE</md-button>
     </p>
   </div>
 </section>
 
-<section id="begin" role="feature">
+<section id="anchor1" role="feature">
   <div layout="row" layout-padding>
     <div class="feature-section flex">
       <div>
@@ -126,7 +126,7 @@
           ... And More
         </h3>
         <p class="feature-description md-subheading">
-          here is our road map for this project:
+          Here is our road map for this project:
           <ul>
             <li>Implementation of file and data storage for domains</li>
             <li>Implementation of client api in many programming environments: java, javascript, ruby, php</li>
@@ -174,11 +174,9 @@
         managed free of charge?
       </p>
       <p>
-          <md-button class="md-raised md-warn md-large"
+          <md-button class="md-raised md-accent md-large"
           ng-href="{{indexCtrl.applicationData.umaasRegistration + '?domain=' + indexCtrl.applicationData.domain}}">Sign Up</md-button>
       </p>
     </div>
   </div>
 </section>
-
-</div>

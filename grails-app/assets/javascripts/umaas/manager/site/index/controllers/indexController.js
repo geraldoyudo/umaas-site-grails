@@ -2,11 +2,26 @@
 
 angular
     .module("umaas.manager.site.index")
-    .controller("IndexController", IndexController);
+    .controller("IndexController", IndexController)
+    .run(['$anchorScroll', function($anchorScroll) {
+    $anchorScroll.yOffset = 50;   // always scroll by 50 extra pixels
+  }]);
 
 function IndexController(applicationDataFactory, contextPath,
-   $state, $rootScope, $http, $sce) {
+   $state, $rootScope, $http, $sce, $anchorScroll, $location) {
     var vm = this;
+    vm.gotoAnchor = function(x) {
+     var newHash = 'anchor' + x;
+     if ($location.hash() !== newHash) {
+       // set the $location.hash to `newHash` and
+       // $anchorScroll will automatically scroll to it
+       $location.hash('anchor' + x);
+     } else {
+       // call $anchorScroll() explicitly,
+       // since $location.hash hasn't changed
+       $anchorScroll();
+     }
+   };
     var getUser = function(){
       $http.get('profile').then(function(resp){
         console.log(resp);

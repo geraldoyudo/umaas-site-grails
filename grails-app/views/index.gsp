@@ -25,7 +25,7 @@
     <div layout="row">
 
       <a flex class="app-title" href="#">
-        <img src="/assets/umaas.png" alt="UMAAS" class="logo" style="width:40px; height:40px"/>
+        <md-button class="md-primary md-raised">UMAAS</md-button>
       </a>
         <md-menu>
           <md-button aria-label="Documentation Menu" class="md-primary md-raised" ng-click="$mdOpenMenu($event)">

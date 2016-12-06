@@ -7,6 +7,7 @@
 
 angular.module("umaas.manager.site.index", [
     "umaas.manager.site.core",
+    "ngAnimate",
     "ui.router",
     "formly",
     "ngMaterial",
