@@ -93,8 +93,19 @@
       </div>
     </div>
 
-    <div class="footer" md-colors="{background: 'primary'}" layout="row">
-           <p>Copyright (c) 2008</p>
+    <div class="footer" md-colors="{background: 'primary'}" layout="column">
+          <div layout="row" layout-padding>
+            <a href="#">Home</href>
+            <a href="#/about">About</href>
+            <a href="#/contact-us">Contact Us</href>
+            <a ng-href="{{indexCtrl.applicationData.blog}}">Blog</href>
+          </div>
+          <div layout="row" layout-padding>
+            <span> Copyright (c) ISSLNG 2016</span>
+            <a href="#">Terms of Service</href>
+            <a href="#/about">Privacy Policy</href>
+          </div>
+
     </div>
 
     <asset:javascript src="/umaas/manager/site/umaas.manager.site.js" />

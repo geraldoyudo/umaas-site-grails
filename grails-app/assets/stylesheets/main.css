@@ -4,10 +4,13 @@
 	height: 100%;
 	margin: 0 auto -4em;
 }
-.footer, .push {
+.push {
 	height: 4em;
 }
 
+.footer div{
+	margin: 5px auto
+}
 .app-title *{
   vertical-align: middle;
 }
