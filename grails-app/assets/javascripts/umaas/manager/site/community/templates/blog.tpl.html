@@ -17,7 +17,7 @@
         <input ng-model="blogSearch" type="text" id="blogSearch">
       </md-input-container>
     </div>
-    <div class="column">
+    <md-content class="column">
 
       <md-list>
         <md-list-item ng-repeat="blog in blogs | filter:{title: blogSearch} |limitTo: 10| orderBy:'date':true as collection" class="align-center">
@@ -31,7 +31,7 @@
             </md-card-title>
             <md-card-content>
               <p>
-               Some content here lskdjafldkjfladk sjflkasj flks
+               {{blog.excerpt}}
               </p>
             </md-card-content>
             <md-card-actions layout="row" layout-align="end" layout-align="start center">
@@ -43,6 +43,6 @@
           No Blog Posts
         </md-list-item>
       <md-list>
-    </div>
+    </md-content>
   </div>
 </div>
