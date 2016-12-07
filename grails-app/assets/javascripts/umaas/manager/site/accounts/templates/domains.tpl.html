@@ -1,49 +1,42 @@
-<div class="container" ng-init="createAccessCodeView = false">
-<h3>My Domains </h3>
-<div class = "container">
-<div ng-if="!domains.length"> No Domains</div>
-<!-- exact table from live demo -->
-<md-table-container ng-if="domains.length">
-  <table md-table>
-    <thead md-head>
-      <tr md-row>
-        <th md-column ><span>Domain ID</span></th>
-        <th md-column><span>Domain Name</span></th>
-        <th md-column>Domain Code</th>
-      </tr>
-    </thead>
-    <tbody md-body>
-      <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="domain in domains">
-        <td md-cell>{{domain.domainId}}</td>
-        <td md-cell>{{domain.name}}</td>
-        <td md-cell>{{domain.code}}</td>
-        <td md-cell>
-          <md-button ng-href="{{indexCtrl.applicationData.umaasAdministration + '?domain='+ domain.name}}">
-            Manage
-          </md-button>
-        </td>
-        <td md-cell>
-          <md-button ng-href="{{indexCtrl.applicationData.umaasRegistration + '?domain='+ domain.name}}">
-            Register User
-          </md-button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</md-table-container>
-<div class = "row" ng-if="domains.length < user.customFields.domainSize">
-  <md-button class="md-primary" ng-click="data.createDomainView = true">Create Domain</md-button>
+<div layout="column" layout-fill>
+<div md-colors="{background: 'primary'}" layout-padding class="align-center">
+ <h1 class="md-subheading">  Domains </h1>
 </div>
-<md-card ng-show="data.createDomainView" class = "row" ng-init="newDomain =newDomainModel()">
-  <formly-form
-   model="newDomain" fields="newDomainField"
-  form="domainForm">
-    <md-button type="submit" class="md-warn" ng-disabled="domainForm.$invalid"
-      ng-click="createDomain(newDomain); data.createDomainView = false">
-      Submit
+<div layout="column" class="align-center" layout-fill>
+  <div ng-if="!domains.length" class="not-found"> No Domains</div>
+  <md-table-container ng-if="domains.length">
+    <table md-table>
+      <thead md-head>
+        <tr md-row>
+          <th md-column ><span>Domain ID</span></th>
+          <th md-column><span>Domain Name</span></th>
+          <th md-column>Domain Code</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="domain in domains">
+          <td md-cell>{{domain.domainId}}</td>
+          <td md-cell>{{domain.name}}</td>
+          <td md-cell>{{domain.code}}</td>
+          <td md-cell>
+            <md-button class="md-primary" ng-href="{{indexCtrl.applicationData.umaasAdministration + '?domain='+ domain.name}}">
+              Manage
+            </md-button>
+          </td>
+          <td md-cell>
+            <md-button class="md-primary" ng-href="{{indexCtrl.applicationData.umaasRegistration + '?domain='+ domain.name}}">
+              Register User
+            </md-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <div class = "row" ng-if="domains.length < user.customFields.domainSize">
+    <md-button class="md-fab md-accent md-fab-bottom-right" ng-click="newDomainDialog()">
+    <md-icon md-font-set="material-icons">add</md-icon>
     </md-button>
-  </formly-form>
-</md-card>
+  </div>
 </div>
 
 </div>

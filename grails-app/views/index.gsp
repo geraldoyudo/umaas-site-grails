@@ -52,7 +52,7 @@
         </md-menu>
         <md-menu ng-if="indexCtrl.user">
           <md-button aria-label="Accounts Menu" class="md-primary md-raised" ng-click="$mdOpenMenu($event)">
-            <span>My Accounts</span>
+            <span>My Account</span>
             <div md-menu-origin></div>
           </md-button>
           <md-menu-content width="6">

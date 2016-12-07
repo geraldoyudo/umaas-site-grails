@@ -1,0 +1,17 @@
+<md-dialog>
+  <md-dialog-content ng-init="newDomain =newDomainModel()">
+    <formly-form
+     model="newDomain" fields="newDomainField"
+    form="domainForm">
+    </formly-form>
+  </md-dialog-content>
+   <md-dialog-actions>
+     <md-button type="submit" class="md-warn" ng-disabled="domainForm.$invalid"
+       ng-click="createDomain(newDomain);">
+       Create Domain
+     </md-button>
+     <md-button ng-click="closeDialog()" class="md-primary">
+      Cancel
+      </md-button>
+  </md-dialog-actions>
+</md-dialog>

@@ -5,14 +5,9 @@ angular
     .controller("AccountsController", AccountsController);
 
 function AccountsController(Domain, AccessCode,
-  $scope, $rootScope, userProfileService, FormFactory) {
+  $scope, $rootScope, userProfileService, $mdDialog) {
   $scope.user = userProfileService.getUser();
-  var initialize = function(){
-    $scope.domains = [];
-    $scope.accessCodes =[];
-    $scope.data = {};
-    $scope.data.createDomainView = false;
-    $scope.data.createAccessCodeView = false;
+  function getDomainsByUser(){
     Domain.listByUser({uid: $scope.user.id}).$promise.then(function(domains){
         console.log(domains);
         if(domains.length){
@@ -23,7 +18,9 @@ function AccountsController(Domain, AccessCode,
     }, function(error){
       console.log(error);
     });
+  }
 
+  function getAccessCodesByUser(){
     AccessCode.listByUser({uid: $scope.user.id}).$promise.then(function(codes){
       console.log(codes);
       if(codes.length){
@@ -33,6 +30,16 @@ function AccountsController(Domain, AccessCode,
     }, function(error){
         console.log(error);
     });
+  }
+  var initialize = function(){
+    $scope.domains = [];
+    $scope.accessCodes =[];
+    $scope.data = {};
+    $scope.data.createDomainView = false;
+    $scope.data.createAccessCodeView = false;
+    getDomainsByUser();
+    getAccessCodesByUser();
+
   }
   var reloadUser = function(event, user){
     console.log("User change");
@@ -45,8 +52,6 @@ function AccountsController(Domain, AccessCode,
   $rootScope.$on('app.newUser', reloadUser);
   console.log("Initializing accounts controller");
 
-  $scope.newDomainField = FormFactory.createDomain();
-  $scope.newAccessCodeField = FormFactory.createAccessCode();
   $scope.saveDomain = function(domain){
     Domain.update({id:domain.id}, domain).$promise.then(function(){
       alert("Update Successful");
@@ -57,25 +62,7 @@ function AccountsController(Domain, AccessCode,
       alert("Update Successful");
     });
   }
-  $scope.createDomain = function(domain){
-    Domain.save(domain).$promise.then(function(d){
-      alert("Domain created successfully");
-      $scope.domains.push(d);
-    });
-  }
-  $scope.createAccessCode = function(accessCode){
-    AccessCode.save(accessCode).$promise.then(function(ac){
-      alert("Access Code created successfully");
-      $scope.accessCodes.push(ac);
-    });
-  }
 
-  $scope.newAccessCodeModel = function(){
-    return {code: "", userId: $scope.user.id};
-  }
-  $scope.newDomainModel = function(){
-    return {code: "", name: "", userId: $scope.user.id};
-  }
   $scope.getDomainName = function(domainId){
     for(var i=0; i<$scope.domains.length; ++i){
       if($scope.domains[i].domainId === domainId){
@@ -94,4 +81,19 @@ function AccountsController(Domain, AccessCode,
         })
     })
   }
+
+  $scope.newDomainDialog = function($event){
+    $mdDialog.show({
+      parent: angular.element(document.body),
+      targetEvent: $event,
+      templateUrl: "/umaas/manager/site/accounts/newDomain.html",
+      controller: "AccountsDialogController",
+      locals: {
+           user: $scope.user
+         }
+    }).then(function(domain){
+        $scope.domains.push(domain);
+    });
+  }
+
 }
