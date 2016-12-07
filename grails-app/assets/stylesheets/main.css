@@ -116,3 +116,10 @@ section[role=feature] .feature-description{
 #header .md-button{
 	margin-bottom: 8%;
 }
+
+#about .header * {
+	width: 70%;
+}
+#about .team {
+	margin-bottom: 20px;
+}

@@ -1,42 +1,46 @@
-<div class="container">
-  <h1 class="md-display-3 align-center">
-    Your users deserve to be happy!
-  </h1>
+<div layout="column" class="align-center" id="about">
+  <div class="align-center header" layout="column" layout-align="begin center">
+    <h3 class="md-display-3" >
+      Your users deserve to be happy!
+    </h3>
 
-  <p>
-    Users of application, be it mobile or web are customers too. They deserve
-    to be treated with the unwavering dedication of normal paying customers.
-    This is because they continually drive traffic to your site!!
-  </p>
+    <p class="md-headline">
+      Users of application, be it mobile or web are customers too. They deserve
+      to be treated with the unwavering dedication of normal paying customers.
+      This is because they continually drive traffic to your site!!
+    </p>
 
-  <p>
-    Meet the team whose sole purpose is to provide an enabling framework for your
-    user interraction.
-  </p>
+    <p class="md-headline">
+      Meet the team whose sole purpose is to provide an enabling framework for your
+      user interraction.
+    </p>
 
-  <div>
-    <h1 class="md-display-3 align-center">
+  </div>
+
+  <div layout="column" flex class="team">
+    <h3 class="md-display-3 align-center">
       Meet the Team
-    </h1>
-    <md-grid-list
-        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
-        md-row-height-gt-md="1:1" md-row-height="4:3"
-        md-gutter="8px" md-gutter-gt-sm="4px" >
+    </h3>
+      <md-grid-list
+          md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+          md-row-height-gt-md="1:1" md-row-height="4:3"
+          md-gutter="8px" md-gutter-gt-sm="4px" >
 
-    <md-grid-tile ng-repeat="staff in indexCtrl.staffs"
-                  md-rowspan="1"
-                  md-colspan="2"
-                  md-colspan-sm="1"
-                  md-colspan-xs="2" class="staff" >
-      <img ng-src="{{staff.photo}}"></img>
-      <md-grid-tile-footer class="align-center">
-        <div>
-          <div>{{staff.name}}</div>
-          <div>{{staff.designation}}</div>
-        </div>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-  </md-grid-list>
+      <md-grid-tile ng-repeat="staff in indexCtrl.staffs"
+                    md-rowspan="1"
+                    md-colspan="2"
+                    md-colspan-sm="1"
+                    md-colspan-xs="2" class="staff" >
+        <img ng-src="{{staff.photo}}"></img>
+        <md-grid-tile-footer class="align-center">
+          <div>
+            <div>{{staff.name}}</div>
+            <div>{{staff.designation}}</div>
+          </div>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+      </md-grid-list>
+
 
   </div>
 </div><!-- /container -->
