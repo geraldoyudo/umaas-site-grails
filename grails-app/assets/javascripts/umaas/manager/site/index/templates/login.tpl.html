@@ -1,10 +1,12 @@
 <div layout="row" id="loginPage">
   <md-card>
-    <div flex class="logo">
-      <img src="/assets/umaas.png" alt="UMAAS" class="logo"/>
-    </div>
     <div flex layout="row">
       <div flex="60" flex-offset="20">
+        <div flex class="align-center" id="login-title" md-colors="{background: 'primary'}">
+          <h3 class="md-subheading" >
+            UMAAS
+          </h3>
+        </div>
         <form layout="column">
           <md-input-container>
             <label>Username</label>
@@ -15,7 +17,7 @@
             <input ng-model="password" type="password" id="inputPassword" placeholder="Password" required>
           </md-input-container>
           <md-checkbox aria-label="Remember me?" ng-model="rememberme"> Remember me</md-checkbox>
-          <md-button class="md-warn md-raised" type="submit" ng-click="login(username,password, rememberme)">Sign in</md-button>
+          <md-button class="md-primary md-raised" type="submit" ng-click="login(username,password, rememberme)">Sign in</md-button>
         </form>
       </div>
     </div>
