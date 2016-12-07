@@ -1,36 +1,48 @@
 <div layout="column" >
-  <div md-colors="{background: 'accent'}" layout-padding class="align-center">
-   <h1 class="md-display-3">  Blog </h1>
+  <div md-colors="{background: 'primary'}" layout-padding class="align-center">
+   <h1 class="md-subheading">  Blog </h1>
   </div>
   <p class="align-center">
     Feel free to go to the umaas blog here
   </p>
   <div class="align-center">
-    <md-button class="md-warn md-raised" ng-href="{{indexCtrl.applicationData.blog}}">
+    <md-button class="md-accent md-raised" ng-href="{{indexCtrl.applicationData.blog}}">
       Go To Blog
     </md-button>
   </div>
-  <br/>
-    <h3 class="md-subheading">
-      Blog Search
-    </h3>
+  <div layout="column" class="align-center">
     <div class="row">
       <md-input-container flex="70" flex-grow>
-        <label>Search</label>
-        <input ng-model="blogSearch" type="text" id="blogSearch" required autofocus>
+        <label>Search Topics</label>
+        <input ng-model="blogSearch" type="text" id="blogSearch">
       </md-input-container>
     </div>
     <div class="column">
 
       <md-list>
         <md-list-item ng-repeat="blog in blogs | filter:{title: blogSearch} |limitTo: 10| orderBy:'date':true as collection" class="align-center">
-        <div flex layout="row"><span flex="70">{{blog.title}}</span> <span flex="30">{{blog.date}}</span></div>
-        <md-button class="md-warn md-raised" ng-href="{{indexCtrl.applicationData.blog + blog.url}}"> Read</md-button>
+
+          <md-card flex>
+
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{blog.title}}</span>
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+              <p>
+               Some content here lskdjafldkjfladk sjflkasj flks
+              </p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end" layout-align="start center">
+              <md-button class="md-primary md-raised" ng-href="{{indexCtrl.applicationData.blog + blog.url}}">Read</md-button>
+            </md-card-actions>
+          </md-card>
         </md-list-item>
         <md-list-item ng-show="!collection.length" md-colors="{background: 'warn'}" class="md-subheading" layout-padding>
           No Blog Posts
         </md-list-item>
       <md-list>
     </div>
-
+  </div>
 </div>
