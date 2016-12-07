@@ -87,6 +87,7 @@
 
     </div>
     <div class="wrapper">
+      <md-progress-circular class="loading" ng-show="indexCtrl.running" md-mode="indeterminate"></md-progress-circular>
       <div  layout-fill>
           <div ui-view layout-fill></div>
           <div class="push"></div>

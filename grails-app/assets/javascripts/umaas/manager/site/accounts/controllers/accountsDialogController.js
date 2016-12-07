@@ -18,15 +18,19 @@ function AccountsDialogController($mdDialog, $scope,
     return {code: "", name: "", userId: user.id};
   }
   $scope.createDomain = function(domain){
+      $scope.indexCtrl.running = true;
     Domain.save(domain).$promise.then(function(d){
+        $scope.indexCtrl.running = false;
       alert("Domain created successfully");
       $mdDialog.hide(d);
     });
   }
   $scope.createAccessCode = function(accessCode){
+    $scope.indexCtrl.running = true;
     AccessCode.save(accessCode).$promise.then(function(ac){
       alert("Access Code created successfully");
-      $mdDialog.hide(accessCode);
+        $scope.indexCtrl.running = false;
+      $mdDialog.hide(ac);
     });
   }
   $scope.newDomainField = FormFactory.createDomain();

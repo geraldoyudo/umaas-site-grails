@@ -1,0 +1,16 @@
+<md-dialog>
+  <md-dialog-content ng-init="newAccessCode = newAccessCodeModel()">
+    <formly-form  model="newAccessCode" fields="newAccessCodeField"
+    form="accessCodeForm">
+    </formly-form>
+  </md-dialog-content>
+   <md-dialog-actions>
+     <md-button class="md-warn" type="submit" ng-disabled="accessCodeForm.$invalid"
+       ng-click="createAccessCode(newAccessCode);">
+       Submit
+     </md-button>
+     <md-button ng-click="closeDialog()" class="md-primary">
+      Cancel
+      </md-button>
+  </md-dialog-actions>
+</md-dialog>

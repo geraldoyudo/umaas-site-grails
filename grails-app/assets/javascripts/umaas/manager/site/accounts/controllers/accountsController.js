@@ -53,12 +53,16 @@ function AccountsController(Domain, AccessCode,
   console.log("Initializing accounts controller");
 
   $scope.saveDomain = function(domain){
+      $scope.indexCtrl.running = true;
     Domain.update({id:domain.id}, domain).$promise.then(function(){
+        $scope.indexCtrl.running = false;
       alert("Update Successful");
     });
   }
   $scope.saveAccessCode = function(accessCode){
+    $scope.indexCtrl.running = true;
     AccessCode.update({id:accessCode.id}, accessCode).$promise.then(function(){
+      $scope.indexCtrl.running = false;
       alert("Update Successful");
     });
   }
@@ -93,6 +97,20 @@ function AccountsController(Domain, AccessCode,
          }
     }).then(function(domain){
         $scope.domains.push(domain);
+    });
+  }
+
+  $scope.newAccessCodeDialog = function($event){
+    $mdDialog.show({
+      parent: angular.element(document.body),
+      targetEvent: $event,
+      templateUrl: "/umaas/manager/site/accounts/newAccessCode.html",
+      controller: "AccountsDialogController",
+      locals: {
+           user: $scope.user
+         }
+    }).then(function(code){
+        $scope.accessCodes.push(code);
     });
   }
 

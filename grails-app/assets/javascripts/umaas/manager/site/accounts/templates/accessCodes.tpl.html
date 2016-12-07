@@ -1,44 +1,38 @@
-<div class="container" ng-init="createAccessCodeView = false">
-<h3>Access Codes </h3>
-<div class = "container">
-<div ng-if="!accessCodes.length"> No Access Codes</div>
-<md-table-container ng-if="accessCodes.length">
-  <table md-table>
-    <thead md-head>
-      <tr md-row>
-        <th md-column ><span>ID</span></th>
-        <th md-column><span>Code</span></th>
-        <th md-column><span>Domains</span></th>
-      </tr>
-    </thead>
-    <tbody md-body>
-      <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="accessCode in accessCodes">
-        <td md-cell>{{accessCode.codeId}}</td>
-        <td md-cell>{{accessCode.code}}</td>
-        <td md-cell>
-          <md-select ng-model="accessCode.domains" multiple>
-            <md-option ng-repeat="domain in domains" value="{{domain.domainId}}">{{domain.name}}</option>
-          </md-select>
-        </td>
-        <td md-cell>
-          <md-button class="md-primary" ng-click="saveAccessCode(accessCode)">UPDATE</md-button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</md-table-container>
-<div class = "row" ng-if="accessCodes.length < user.customFields.accessCodeSize">
-  <md-button class="md-primary" ng-click="data.createAccessCodeView = true">Create Access Code</md-button>
+<div layout="column" layout-fill>
+<div md-colors="{background: 'primary'}" layout-padding class="align-center">
+ <h1 class="md-subheading">  Access Codes </h1>
 </div>
-<div ng-if="data.createAccessCodeView" class = "row"  ng-init="newAccessCode = newAccessCodeModel()">
-  <formly-form  model="newAccessCode" fields="newAccessCodeField"
-  form="accessCodeForm">
-    <md-button class="md-warn" type="submit" ng-disabled="accessCodeForm.$invalid"
-      ng-click="createAccessCode(newAccessCode); data.createAccessCodeView = false">
-      Submit
+<div layout="column" class="align-center" layout-fill>
+  <div ng-if="!accessCodes.length"> No Access Codes</div>
+  <md-table-container ng-if="accessCodes.length">
+    <table md-table>
+      <thead md-head>
+        <tr md-row>
+          <th md-column ><span>ID</span></th>
+          <th md-column><span>Code</span></th>
+          <th md-column><span>Domains</span></th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-select-id="name" md-auto-select ng-repeat="accessCode in accessCodes">
+          <td md-cell>{{accessCode.codeId}}</td>
+          <td md-cell>{{accessCode.code}}</td>
+          <td md-cell>
+            <md-select ng-model="accessCode.domains" multiple>
+              <md-option ng-repeat="domain in domains" value="{{domain.domainId}}">{{domain.name}}</option>
+            </md-select>
+          </td>
+          <td md-cell>
+            <md-button class="md-primary" ng-click="saveAccessCode(accessCode)">UPDATE</md-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <div class = "row" ng-if="accessCodes.length < user.customFields.accessCodeSize">
+    <md-button class="md-fab md-accent md-fab-bottom-right" ng-click="newAccessCodeDialog()">
+    <md-icon md-font-set="material-icons">add</md-icon>
     </md-button>
-  </formly-form>
+  </div>
 </div>
-</div>
-
 </div>
