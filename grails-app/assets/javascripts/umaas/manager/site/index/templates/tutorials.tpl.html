@@ -1,8 +1,18 @@
-<div layout-fill>
-  <p>
+<div layout-fill class="align-center">
+  <h3 class="md-heading-2">
     Want to learn? Check out the list of tutorials below:
-  </p>
-  <div ng-repeat="ref in tutorials" layout="row">
-    <a ng-href="{{indexCtrl.applicationData.blog + ref.url}}">{{ref.title}}</a>
-  </div>
+  </h3>
+  <md-input-container>
+    <input ng-model="tutorialSearch" id="tutorialSearch" placeholder="Search">
+  </md-input-container>
+  <md-content>
+    <md-list>
+      <md-list-item ng-repeat="ref in tutorials | filter:{title: tutorialSearch}  | orderBy:'date':true as collection"  class="align-center">
+        <md-button class="md-primary md-raised" flex ng-href="{{indexCtrl.applicationData.blog + ref.url}}">{{ref.title}}</md-button>
+      </md-list-item>
+      <md-list-item ng-show="!collection.length" md-colors="{background: 'warn'}" class="md-subheading" layout-padding>
+        No Tutorials
+      </md-list-item>
+    </md-list>
+  </md-content>
 </div>
