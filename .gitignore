@@ -11,5 +11,4 @@ build/
 .classpath
 /bin/
 /node_modules/
-/grails-app/assets/vendor/**
 .asscache
