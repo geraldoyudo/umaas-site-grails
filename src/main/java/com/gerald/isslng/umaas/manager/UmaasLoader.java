@@ -183,7 +183,7 @@ public class UmaasLoader {
 				.queryParam("codeId", accessCodeId)
 				.queryParam("entityType", "ALL")
 				.queryParam("entityId", "domain")
-				.queryParam("priviledge", "UPDATE");
+				.queryParam("priviledge", "ALL");
 
 		String id = null;
 		String url = builder.build().toUriString();
@@ -203,7 +203,7 @@ public class UmaasLoader {
 			mapping.put("entityId", "domain");
 			mapping.put("entityType", "ALL");
 			mapping.put("accessCode", "/domain/domainAccessCodes/" + accessCodeId);
-			mapping.put("priviledge", "UPDATE");
+			mapping.put("priviledge", "ALL");
 			Map<String,Object> meta = new HashMap<>();
 			meta.put("domains", domainList);
 			mapping.put("meta", meta);
