@@ -30,6 +30,8 @@ public class UmaasLoader {
 	private String domainId;
 	@Value("${umaas.service.file_limit}")
 	private String fileLimitService;
+	@Value("${umaas.service.user_limit}")
+	private String userLimitService;
 	@Autowired
 	private RestTemplate restTemplate;
 
@@ -50,10 +52,10 @@ public class UmaasLoader {
 		return code;
 	}
 	
-	public Map<String,Object> loadLimit(String domainId){
+	public Map<String,Object> loadLimit(String domainId, String limitName){
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(umaasCoreUrl +
 				"/system/")
-				.path(fileLimitService)
+				.path(getLimitService(limitName))
 				.path("/execute");
 		Map<String,Object> executionParams = new HashMap<>();
 		executionParams.put("method", "getDomainLimit");
@@ -64,6 +66,12 @@ public class UmaasLoader {
 		return (Map<String,Object>)limitMap.get("value");
 	}
 
+	private String getLimitService(String limitName){
+		switch(limitName){
+		case "userLimit": return userLimitService;
+		default: return fileLimitService;
+		}
+	}
 	public Map<String,Object> saveAccessCode(String id, final Map<String,Object> code){
 		Map<String,Object> accessCode = new HashMap<>(code);
 		Collection<String> domains = (Collection<String>) accessCode.remove("domains");
@@ -148,7 +156,7 @@ public class UmaasLoader {
 				.queryParam("codeId", accessCodeId)
 				.queryParam("entityType", "ALL")
 				.queryParam("entityId", "domain")
-				.queryParam("priviledge", "UPDATE");
+				.queryParam("priviledge", "ALL");
 		Collection<String> domains = new ArrayList<>();
 		try{
 			String url = builder.build().toUriString();

@@ -27,5 +27,6 @@ class UrlMappings {
         get "/documentation/reference" (controller: "documentation", action: "reference")
         get "/blog/$collection" (controller: "blog", action: "index")
         get "/domain/$domain/limit" (controller:"domain", action:"getDomainLimit")
+        get "/domain/$domain/userLimit" (controller:"domain", action:"getDomainUserLimit")
     }
 }

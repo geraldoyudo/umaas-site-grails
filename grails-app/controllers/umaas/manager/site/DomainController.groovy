@@ -81,6 +81,10 @@ class DomainController {
     }
 
     def getDomainLimit(String domain) {
-        respond umaasLoader.loadLimit(domain);
+        respond umaasLoader.loadLimit(domain, "limit");
+    }
+
+     def getDomainUserLimit(String domain) {
+        respond umaasLoader.loadLimit(domain, "userLimit");
     }
 }

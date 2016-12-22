@@ -83,6 +83,9 @@ function AccountsController(Domain, AccessCode,
         Domain.limit({domain: domain.domainId}).$promise.then(function(limit){
           domain.limit = limit;
         })
+        Domain.userLimit({domain: domain.domainId}).$promise.then(function(limit){
+          domain.userLimit = limit;
+        })
     })
   }
 
@@ -114,4 +117,11 @@ function AccountsController(Domain, AccessCode,
     });
   }
 
+  $scope.$on('$stateChangeStart', 
+  function(event, toState, toParams, fromState, fromParams, options){ 
+    console.log(toState);
+      if(toState.name === "account.dashboard"){
+        $scope.refreshLimits();
+      }
+  })
 }

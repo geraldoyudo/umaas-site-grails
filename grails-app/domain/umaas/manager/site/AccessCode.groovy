@@ -14,10 +14,10 @@ class AccessCode {
     }
 
     def onLoad(){
-      print "Before Loading"
-      println this.codeId;
-      Map props = umaasLoader.loadAccessCode(this.codeId);
-      this.properties = props;
+      println "Before Loading ${codeId}"
+      println this.codeId
+      Map props = umaasLoader.loadAccessCode(this.codeId)
+      this.properties = props
     }
 
     def beforeInsert(){

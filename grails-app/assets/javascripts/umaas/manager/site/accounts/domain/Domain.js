@@ -15,7 +15,9 @@ function Domain($resource) {
           "listByUser": {method: 'GET',
           url:"domain/listByUser?uid=:uid", isArray: true},
         "limit": {method: 'GET',
-          url:"domain/:domain/limit"}}
+          url:"domain/:domain/limit"},
+          "userLimit": {method: 'GET',
+            url:"domain/:domain/userLimit"}}
     );
 
     Domain.list = Domain.query;
