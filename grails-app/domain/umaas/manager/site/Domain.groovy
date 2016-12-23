@@ -7,7 +7,7 @@ class Domain {
     String code
     transient umaasLoader
 
-  //  static transients = ['name', 'code']
+  // static transients = ['name', 'code']
     static constraints = {
       name (bindable:true, nullable:true)
       code (bindable:true, nullable:true)
@@ -15,7 +15,8 @@ class Domain {
     }
 
 
-    def onLoad(){
+
+    def afterLoad(){
       print "Before Loading"
       print this.domainId;
       print domainId;

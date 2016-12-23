@@ -5,7 +5,7 @@ class AccessCode {
     String userId
     String code
     Set<String> domains
-
+    
     transient umaasLoader
     //static transients = ['code']
     static constraints = {
@@ -13,7 +13,7 @@ class AccessCode {
       codeId nullable:true
     }
 
-    def onLoad(){
+    def afterLoad(){
       println "Before Loading ${codeId}"
       println this.codeId
       Map props = umaasLoader.loadAccessCode(this.codeId)
