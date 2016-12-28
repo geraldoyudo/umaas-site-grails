@@ -22,13 +22,17 @@
 </head>
 
 <body ng-app="umaas.manager.site" ng-controller="IndexController as indexCtrl" ng-cloak="">
-    <div layout="row">
-
-      <a flex class="app-title" href="#">
+    <div layout="row" layout-xs="column" layout-sm="column">
+      <div layout="row" flex>
+      <a class="app-title" href="#">
         <md-button class="md-primary md-raised">UMAAS</md-button>
       </a>
-        <md-menu>
-          <md-button aria-label="Documentation Menu" class="md-primary md-raised" ng-click="$mdOpenMenu($event)">
+      <span flex></span>
+      <md-button ng-click="indexCtrl.showNav = !indexCtrl.showNav" hide-gt-sm class="md-primary">
+       <md-icon md-font-set="material-icons">menu</md-icon></md-button>
+      </div>
+        <md-menu style="margin-right: 16px" ng-show="indexCtrl.showNav || indexCtrl.$mdMedia('gt-sm')">
+          <md-button aria-label="Documentation Menu" class="nav-menu md-primary md-raised" ng-click="$mdOpenMenu($event)">
             <span>Documentation</span>
             <div md-menu-origin></div>
           </md-button>
@@ -50,8 +54,8 @@
             </md-menu-item>
           </md-menu-content>
         </md-menu>
-        <md-menu ng-if="indexCtrl.user">
-          <md-button aria-label="Accounts Menu" class="md-primary md-raised" ng-click="$mdOpenMenu($event)">
+        <md-menu style="margin-right: 16px" ng-if="indexCtrl.user" ng-show="indexCtrl.showNav || indexCtrl.$mdMedia('gt-sm')">
+          <md-button aria-label="Accounts Menu" class="md-primary md-raised nav-menu" ng-click="$mdOpenMenu($event)">
             <span>My Account</span>
             <div md-menu-origin></div>
           </md-button>
@@ -73,17 +77,23 @@
             </md-menu-item>
           </md-menu-content>
         </md-menu>
-      <div>
-        <md-nav-bar  md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-             <md-nav-item md-nav-href="/#!/community" name="community">Community</md-nav-item>
-             <md-nav-item md-nav-sref="about" name="about">About</md-nav-item>
-             <md-nav-item ng-if="!indexCtrl.user"  md-nav-sref="login" name="login">Log In</md-nav-item>
-             <md-nav-item ng-if="!indexCtrl.user"
-             md-nav-href="{{indexCtrl.applicationData.umaasRegistration + '?domain=' + indexCtrl.applicationData.domain}}"
-             name="signup">Sign Up</md-nav-item>
-             <md-nav-item ng-if="indexCtrl.user"  md-nav-href="/logout" name="logout">Log Out</md-nav-item>
-        </md-nav-bar>
-      </div>
+      <md-button aria-label="Community" class="md-primary md-raised" ng-href="/#!/community" ng-show="indexCtrl.showNav || indexCtrl.$mdMedia('gt-sm')">
+            <span>Community</span>
+      </md-button>
+       <md-button aria-label="About" class="md-primary md-raised" ui-sref="about" ng-show="indexCtrl.showNav || indexCtrl.$mdMedia('gt-sm')">
+            <span>About</span>
+      </md-button>
+      <md-button aria-label="Log In" class="md-primary md-raised" ui-sref="login" ng-if="!indexCtrl.user" ng-show="indexCtrl.showNav || indexCtrl.$mdMedia('gt-sm')" >
+            <span>Log In</span>
+      </md-button>
+      <md-button aria-label="Sign Up" class="md-primary md-raised" 
+      ng-href="{{indexCtrl.applicationData.umaasRegistration + '?domain=' + indexCtrl.applicationData.domain}}"
+       ng-if="!indexCtrl.user" ng-show="indexCtrl.showNav || indexCtrl.$mdMedia('gt-sm')" >
+            <span>Sign Up</span>
+      </md-button>
+        <md-button aria-label="Log Out" class="md-primary md-raised" ng-if="indexCtrl.user"  ng-href="/logout" ng-show="indexCtrl.showNav || indexCtrl.$mdMedia('gt-sm')">
+            <span>Log Out</span>
+      </md-button>
 
     </div>
     <div class="wrapper">

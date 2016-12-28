@@ -8,7 +8,7 @@ angular
   }]);
 
 function IndexController(applicationDataFactory, contextPath,
-   $state, $rootScope, $http, $sce, $anchorScroll, $location) {
+   $state, $rootScope, $http, $sce, $anchorScroll, $location, $mdMedia) {
     var vm = this;
     vm.gotoAnchor = function(x) {
      var newHash = 'anchor' + x;
@@ -38,7 +38,7 @@ function IndexController(applicationDataFactory, contextPath,
       getUser();
     });
     vm.contextPath = contextPath;
-
+    vm.$mdMedia = $mdMedia;
     applicationDataFactory.get().then(function(response) {
         vm.applicationData = response.data;
     });
@@ -62,4 +62,8 @@ function IndexController(applicationDataFactory, contextPath,
       {photo: '/assets/umaas.png', name: 'Oyudo Gerald', designation: 'Software Developer'},
       {photo: '/assets/umaas.png', name: 'Oyudo Gerald', designation: 'Software Developer'}
     ]
+    $rootScope.$on('$stateChangeStart', 
+    function(event, toState, toParams, fromState, fromParams, options){ 
+       vm.showNav =false;
+    })
 }
