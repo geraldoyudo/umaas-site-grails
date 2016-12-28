@@ -105,16 +105,16 @@
     </div>
 
     <div class="footer" md-colors="{background: 'primary'}" layout="column">
-          <div layout="row" layout-padding>
-            <a href="#">Home</href>
-            <a href="#/about">About</href>
-            <a href="#/contact-us">Contact Us</href>
-            <a ng-href="{{indexCtrl.applicationData.blog}}">Blog</href>
+          <div layout="row">
+            <md-button href="#">Home</md-button>
+            <md-button href="#/about">About</md-button>
+            <md-button href="#/contact-us">Contact Us</md-button>
+            <md-button ng-href="{{indexCtrl.applicationData.blog}}">Blog</md-button>
           </div>
-          <div layout="row" layout-padding>
-            <span> Copyright (c) ISSLNG 2016</span>
-            <a href="#">Terms of Service</href>
-            <a href="#/about">Privacy Policy</href>
+          <div layout="row">
+            <md-button> Copyright (c) ISSLNG 2016</md-button>
+            <md-button href="#">Terms of Service</md-button>
+            <md-button href="#/about">Privacy Policy</md-button>
           </div>
 
     </div>
