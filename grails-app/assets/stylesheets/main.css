@@ -77,6 +77,7 @@ section[role=feature] .feature-description{
 
 #loginPage md-card{
   width: 30%;
+  min-width: 350px;
   margin: auto;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -149,4 +150,8 @@ section[role=feature] .feature-description{
   position: absolute;
   top: 50%;
   left: 0px;
+}
+
+.login-ui {
+  min-width: 150px;
 }
