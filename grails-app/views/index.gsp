@@ -21,7 +21,7 @@
     </script>
 </head>
 
-<body ng-app="umaas.manager.site" ng-controller="IndexController as indexCtrl" ng-cloak="">
+<body ng-app="umaas.manager.site" ng-controller="IndexController as indexCtrl" ng-cloak="" ng-init="indexCtrl.showNav = false">
     <div layout="row" layout-xs="column" layout-sm="column">
       <div layout="row" flex>
       <a class="app-title" href="#">
