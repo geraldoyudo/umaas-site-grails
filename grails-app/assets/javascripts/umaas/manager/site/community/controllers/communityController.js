@@ -4,7 +4,7 @@ angular
     .module("umaas.manager.site.community")
     .controller("CommunityController", CommunityController);
 
-function CommunityController( $http, $scope) {
+function CommunityController( $http, $scope, $rootScope, $mdSidenav) {
     var vm = $scope;
     console.log("Community controller loading");
     vm.sections = [
@@ -39,4 +39,7 @@ function CommunityController( $http, $scope) {
       console.log(resp);
       vm.events = resp.data;
     });
+    vm.toggleSidenav = function(menuId) {
+    $mdSidenav(menuId).toggle();
+  };
 }
