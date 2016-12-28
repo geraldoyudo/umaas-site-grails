@@ -8,7 +8,7 @@ angular
   }]);
 
 function IndexController(applicationDataFactory, contextPath,
-   $state, $rootScope, $http, $sce, $anchorScroll, $location, $mdMedia) {
+   $state, $rootScope, $http, $sce, $anchorScroll, $location, $mdMedia, $mdSidenav) {
     var vm = this;
     vm.gotoAnchor = function(x) {
      var newHash = 'anchor' + x;
@@ -65,5 +65,8 @@ function IndexController(applicationDataFactory, contextPath,
     $rootScope.$on('$stateChangeStart', 
     function(event, toState, toParams, fromState, fromParams, options){ 
        vm.showNav =false;
+        if( $mdSidenav("left").isOpen()){
+        $mdSidenav("left").close()
+      }
     })
 }

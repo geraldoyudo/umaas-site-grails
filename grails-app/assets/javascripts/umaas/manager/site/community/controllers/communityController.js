@@ -42,4 +42,10 @@ function CommunityController( $http, $scope, $rootScope, $mdSidenav) {
     vm.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
   };
+    $rootScope.$on('$stateChangeStart', 
+    function(event, toState, toParams, fromState, fromParams, options){ 
+        if( $mdSidenav("left").isOpen()){
+        $mdSidenav("left").close()
+      }
+    })
 }
