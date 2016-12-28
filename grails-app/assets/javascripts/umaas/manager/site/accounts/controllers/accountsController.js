@@ -5,7 +5,7 @@ angular
     .controller("AccountsController", AccountsController);
 
 function AccountsController(Domain, AccessCode,
-  $scope, $rootScope, userProfileService, $mdDialog) {
+  $scope, $rootScope, userProfileService, $mdDialog, $mdSidenav) {
   $scope.user = userProfileService.getUser();
   function getDomainsByUser(){
     Domain.listByUser({uid: $scope.user.id}).$promise.then(function(domains){
@@ -116,12 +116,31 @@ function AccountsController(Domain, AccessCode,
         $scope.accessCodes.push(code);
     });
   }
-
+ $scope.sections = [
+      {
+        ref: "account.dashboard",
+        title: "Dashboard"
+      },
+      {
+        ref: "account.domains",
+        title: "Domains"
+      },
+      {
+        ref: "account.accessCodes",
+        title: "Access Codes"
+      }
+    ]
   $scope.$on('$stateChangeStart', 
   function(event, toState, toParams, fromState, fromParams, options){ 
     console.log(toState);
+    if( $mdSidenav("left").isOpen()){
+       $mdSidenav("left").close()
+    }
       if(toState.name === "account.dashboard"){
         $scope.refreshLimits();
       }
   })
+   $scope.toggleSidenav = function(menuId) {
+    $mdSidenav(menuId).toggle();
+  };
 }
