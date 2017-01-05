@@ -67,7 +67,7 @@ dependencies {
     compile "org.grails.plugins:views-json"
     compile "org.grails.plugins:views-json-templates"
     console "org.grails:grails-console"
-	  compile 'org.grails.plugins:spring-security-core:3.1.1'
+	compile 'org.grails.plugins:spring-security-core:3.1.1'
     compile 'org.apache.httpcomponents:httpclient:4.5.2'
     profile "org.grails.profiles:angular"
     runtime "com.h2database:h2"
@@ -77,6 +77,7 @@ dependencies {
     compile "org.grails:grails-datastore-rest-client"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+    runtime 'mysql:mysql-connector-java:5.1.36'
 }
 
 bootRun {
